@@ -4,6 +4,7 @@
     "airbnb-typescript",
     "react-app",
     "prettier/@typescript-eslint",
+    "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
