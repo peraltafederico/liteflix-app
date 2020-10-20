@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import Header from '../Header/Header'
-import Tooltip from '../UI/Tooltip/Tooltip'
+import Tooltip from './Tooltip/Tooltip'
 import UserNavigation from './UserNavigation/UserNavigation'
 import * as Styled from './Layout.styles'
 
@@ -34,11 +34,10 @@ export default function Layout({
           />
         }
       >
-        <Styled.ToolTipContainer>
-          <Tooltip>
-            <Styled.PlusIcon src="/images/plus.svg" alt="plus" />
-          </Tooltip>
-        </Styled.ToolTipContainer>
+        <Tooltip>
+          <Styled.PlusIcon src="/images/plus.svg" />
+          <Styled.TooltipText>Agregar película</Styled.TooltipText>
+        </Tooltip>
       </Header>
       {children}
     </>
