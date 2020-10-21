@@ -39,7 +39,7 @@ export default function Layout({
 }: Props): ReactElement {
   return (
     <>
-      <Header
+      {/* <Header
         links={links}
         logoUrl="/images/logo.svg"
         secondaryNavigation={
@@ -60,7 +60,7 @@ export default function Layout({
         >
           <Styled.PlusIcon src="/images/plus.svg" />
         </ExtensibleButton>
-      </Header>
+      </Header> */}
       <Drawer settings={settings} sections={sections} />
       {children}
     </>

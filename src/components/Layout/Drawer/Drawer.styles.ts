@@ -10,6 +10,7 @@ export const Container = styled.div`
   height: 100vh;
   color: #ffffff;
   box-sizing: border-box;
+  position: relative;
 `
 
 export const Header = styled.div`
