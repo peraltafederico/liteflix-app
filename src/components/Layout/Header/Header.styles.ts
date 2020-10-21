@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { tablet } from '../../utils/breakpoints'
+import { tablet } from '../../../utils/breakpoints'
 
 export const Header = styled.div`
   height: 41px;
@@ -10,7 +10,7 @@ export const Header = styled.div`
 
   ${tablet} {
     height: 61px;
-    padding: 0px 30px;
+    padding: 10px 30px 0 30px;
   }
 `
 
@@ -18,13 +18,11 @@ export const Navigation = styled.div`
   display: flex;
   width: inherit;
   justify-content: space-between;
-
-  position: relative;
-  bottom: -7px;
 `
 
 export const Content = styled.div`
   display: flex;
+  align-items: baseline;
   width: 100%;
   margin: 0 auto;
   max-width: 1200px;
