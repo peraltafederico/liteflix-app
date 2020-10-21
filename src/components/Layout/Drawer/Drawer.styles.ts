@@ -1,16 +1,25 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.div<{ show: boolean }>`
   width: 228px;
   background-color: #000000;
   display: flex;
   flex-flow: column wrap;
   transition: transform 0.5s;
   padding: 12px 20px 12px 12px;
-  height: 100vh;
   color: #ffffff;
   box-sizing: border-box;
-  position: relative;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: transform 0.5s;
+  overflow: hidden;
+  height: 100%;
+
+  transform: ${(props) =>
+    props.show ? 'translateX(0px)' : 'translateX(-100%)'};
 `
 
 export const Header = styled.div`

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import ExtensibleButtonComponent from './ExtensibleButton/ExtensibleButton'
 
 export const ToolTipContainer = styled.div`
   width: 40px;
