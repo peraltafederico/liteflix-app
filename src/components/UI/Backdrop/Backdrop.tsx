@@ -1,6 +1,10 @@
 import React, { ReactElement } from 'react'
 import * as Styled from './Backdrop.styles'
 
-export default function Backdrop(): ReactElement {
-  return <Styled.Container />
+interface Props {
+  onClick: () => void
+}
+
+export default function Backdrop({ onClick }: Props): ReactElement {
+  return <Styled.Container onClick={onClick} />
 }

@@ -10,15 +10,22 @@ interface Props {
     icon?: JSX.Element
     value: string
   }[]
+  onClose: () => void
+  show: boolean
 }
 
-export default function Drawer({ settings, sections }: Props): ReactElement {
+export default function Drawer({
+  settings,
+  sections,
+  onClose,
+  show,
+}: Props): ReactElement {
   return (
     <>
-      <Backdrop />
-      <Styled.Container>
+      {show && <Backdrop onClick={onClose} />}
+      <Styled.Container show={show}>
         <Styled.Header>
-          <Burger />
+          <Burger onClick={onClose} />
           <Styled.Logo src="/images/logo.svg" />
         </Styled.Header>
         <Styled.User>
