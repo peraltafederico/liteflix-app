@@ -1,8 +1,10 @@
 import React, { ReactElement } from 'react'
-import Header from '../Header/Header'
-import Tooltip from '../UI/Tooltip/Tooltip'
+import Header from './Header/Header'
 import UserNavigation from './UserNavigation/UserNavigation'
 import * as Styled from './Layout.styles'
+import Drawer from './Drawer/Drawer'
+import NotificationBell from './NotificationBell/NotificationBell'
+import ExtensibleButton from './ExtensibleButton/ExtensibleButton'
 
 const links = [
   { href: '#', url: 'Inicio', highlight: true },
@@ -10,6 +12,19 @@ const links = [
   { href: '#', url: 'Películas' },
   { href: '#', url: 'Agregados recientemente' },
   { href: '#', url: 'Mi lista' },
+]
+
+const settings = ['Cambiar Usuario', 'Configuración', 'Ayuda']
+
+const sections = [
+  {
+    icon: <NotificationBell notification={true} />,
+    value: 'Novedades',
+  },
+  { value: 'Series' },
+  { value: 'Películas' },
+  { value: 'Mi lista' },
+  { value: 'Niños' },
 ]
 
 interface Props {
@@ -34,12 +49,14 @@ export default function Layout({
           />
         }
       >
-        <Styled.ToolTipContainer>
-          <Tooltip>
-            <Styled.PlusIcon src="/images/plus.svg" alt="plus" />
-          </Tooltip>
-        </Styled.ToolTipContainer>
+        <ExtensibleButton
+          extensibleText="Agregar película"
+          styles={{ margin: '0 10px' }}
+        >
+          <Styled.PlusIcon src="/images/plus.svg" />
+        </ExtensibleButton>
       </Header>
+      <Drawer settings={settings} sections={sections} />
       {children}
     </>
   )

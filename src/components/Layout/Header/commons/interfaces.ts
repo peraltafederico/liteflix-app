@@ -3,3 +3,4 @@ export interface Link {
   href: string
   highlight?: boolean
 }
+ 
