@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import Header from './Header/Header'
 import UserNavigation from './UserNavigation/UserNavigation'
 import * as Styled from './Layout.styles'
@@ -36,11 +36,18 @@ export default function Layout({
   children,
   notification,
 }: Props): ReactElement {
+  const [showDrawer, setShowDrawer] = useState(false)
+
+  const handleToggleDrawer = () => {
+    setShowDrawer(!showDrawer)
+  }
+
   return (
     <>
-      {/* <Header
+      <Header
         links={links}
         logoUrl="/images/logo.svg"
+        onClickBurger={handleToggleDrawer}
         secondaryNavigation={
           <UserNavigation
             section="Niños"
@@ -55,8 +62,13 @@ export default function Layout({
         >
           <Styled.PlusIcon src="/images/plus.svg" />
         </ExtensibleButton>
-      </Header> */}
-      <Drawer settings={settings} sections={sections} />
+      </Header>
+      <Drawer
+        show={showDrawer}
+        onClose={handleToggleDrawer}
+        settings={settings}
+        sections={sections}
+      />
       {children}
     </>
   )

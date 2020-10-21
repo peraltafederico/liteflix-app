@@ -1,9 +1,13 @@
 import React, { ReactElement } from 'react'
 import * as Styled from './Burger.styles'
 
-export default function Burger(): ReactElement {
+interface Props {
+  onClick: () => void
+}
+
+export default function Burger({ onClick }: Props): ReactElement {
   return (
-    <Styled.Container>
+    <Styled.Container onClick={onClick}>
       <Styled.Line />
       <Styled.Line />
       <Styled.Line />
