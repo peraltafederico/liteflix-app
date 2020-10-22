@@ -8,17 +8,27 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #000000;
   }
 
-  span, a {
+  span, a, p,  h2 {
     text-decoration: none;
-    font-size: 12px;
-    font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
     color: #ffffff;
+  }
+
+  span, a, p {
+    font-size: 12px;
+    font-weight: normal;
+  }
+
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
   }
 
   a {

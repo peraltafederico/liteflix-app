@@ -5,8 +5,13 @@ export const Header = styled.div`
   height: 41px;
   display: flex;
   align-items: center;
-  background-color: #000;
+  background-color: transparent;
   padding: 0px 15px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   ${desktop} {
     height: 61px;
@@ -27,11 +32,12 @@ export const Content = styled.div<{ mobile: boolean }>`
   justify-content: center;
   width: 100%;
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: 1112px;
+  z-index: 999;
 
   ${desktop} {
     align-items: baseline;
-    justify-content: 'initial';
+    justify-content: initial;
   }
 `
 
