@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div<{ show: boolean }>`
   width: 228px;
+  z-index: 999;
   background-color: #000000;
   display: flex;
   flex-flow: column wrap;
@@ -9,7 +10,7 @@ export const Container = styled.div<{ show: boolean }>`
   padding: 12px 20px 12px 12px;
   color: #ffffff;
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
