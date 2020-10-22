@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { desktop, tablet } from '../../../utils/breakpoints'
+import { tablet } from '../../../utils/breakpoints'
 
 export const Container = styled.div<{ size: 'small' | 'large' }>`
   width: 100%;
