@@ -1,4 +1,4 @@
-import React, { ReactElement, CSSProperties } from 'react'
+import React, { ReactElement } from 'react'
 import * as Styled from './BaseButton.styles'
 
 interface Props {
