@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import { ThemeProvider } from 'styled-components'
 import Layout from './components/Layout/Layout'
+import Home from './containers/Home/Home'
 
 const theme = {
   breakpoints: {
@@ -14,7 +15,7 @@ const theme = {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Layout notification>hola :)</Layout>
+      <Home />
     </ThemeProvider>
   )
 }

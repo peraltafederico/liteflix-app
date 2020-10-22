@@ -25,6 +25,14 @@ export default function Header({
   return (
     <Styled.Header>
       <Styled.Content mobile={mobile}>
+        {(mobile || tablet) && (
+          <>
+            <Styled.BurgerContainer mobile={mobile}>
+              <Burger onClick={onClickBurger} />
+            </Styled.BurgerContainer>
+            <Styled.Logo alt="logo" src={logoUrl} />
+          </>
+        )}
         {desktop && (
           <>
             <Styled.Logo alt="logo" src={logoUrl} />
@@ -32,14 +40,6 @@ export default function Header({
               <MainNavigation links={links}>{children}</MainNavigation>
               {secondaryNavigation}
             </Styled.Navigation>
-          </>
-        )}
-        {(mobile || tablet) && (
-          <>
-            <Styled.BurgerContainer mobile={mobile}>
-              <Burger onClick={onClickBurger} />
-            </Styled.BurgerContainer>
-            <Styled.Logo alt="logo" src={logoUrl} />
           </>
         )}
       </Styled.Content>
