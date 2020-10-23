@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import './App.css'
 import { ThemeProvider } from 'styled-components'
 import Home from './containers/Home/Home'
@@ -11,12 +11,10 @@ const theme = {
   },
 }
 
-function App() {
+export default function App(): ReactElement {
   return (
     <ThemeProvider theme={theme}>
       <Home />
     </ThemeProvider>
   )
 }
-
-export default App
