@@ -1,11 +1,8 @@
 import React, { ReactElement } from 'react'
-import BaseButton from '../../../components/UI/BaseButton/BaseButton'
 import useWindowsSize from '../../../hooks/useWindowsSize'
 import * as Styled from './HeroImage.styles'
 
-interface Props {}
-
-export default function HeroImage({}: Props): ReactElement {
+export default function HeroImage(): ReactElement {
   const { desktop, mobile, tablet } = useWindowsSize()
 
   return (
