@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import ProgressBar from '../../../UI/ProgressBar/ProgressBar'
+import ProgressBar from '../../../../UI/ProgressBar/ProgressBar'
 
 import * as Styled from './AddMovieProgress.styles'
 
@@ -20,7 +20,7 @@ export default function AddMovieProgress({
 }: Props): ReactElement {
   const getProgressBarText = () => {
     if (uploading) {
-      return `Cargando ${progress}%`
+      return `Cargando ${progress === 100 ? 99 : progress}%`
     }
 
     if (error) {

@@ -5,6 +5,6 @@ interface Props {
   onClick: () => void
 }
 
-export default function Backdrop({ onClick }: Props): ReactElement {
-  return <Styled.Container onClick={onClick} />
+export default function Backdrop({ onClick, ...props }: Props): ReactElement {
+  return <Styled.Container onClick={onClick} {...props} />
 }
