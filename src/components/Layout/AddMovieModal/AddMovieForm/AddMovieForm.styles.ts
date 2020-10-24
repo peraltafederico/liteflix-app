@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Form as FormikForm } from 'formik'
 import AddMovieButton from '../AddMovieButton/AddMovieButton'
 
 export const InputContainer = styled.div`
@@ -29,4 +30,10 @@ export const Footer = styled.div`
 
 export const Button = styled(AddMovieButton)`
   width: 350px;
+`
+
+export const Form = styled(FormikForm)`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `
