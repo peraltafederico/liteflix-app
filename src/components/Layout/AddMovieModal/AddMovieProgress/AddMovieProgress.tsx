@@ -20,7 +20,7 @@ export default function AddMovieProgress({
 }: Props): ReactElement {
   const getProgressBarText = () => {
     if (uploading) {
-      return `Cargando ${progress}%`
+      return `Cargando ${progress === 100 ? 99 : progress}%`
     }
 
     if (error) {
