@@ -9,11 +9,14 @@ interface Props {
 }
 
 // TODO: Remove show prop
+// TODO: Add types
 
 export default function AddMovieModal({ onClose, show }: Props): ReactElement {
   const [success, setSuccess] = useState(false)
 
-  const handlePublishMovie = () => setSuccess(true)
+  const handlePublishMovie = (values: any) => {
+    setSuccess(true)
+  }
 
   return (
     <Styled.Modal onClose={onClose} show={show} success={success}>
@@ -24,7 +27,7 @@ export default function AddMovieModal({ onClose, show }: Props): ReactElement {
           onClose={onClose}
         />
       ) : (
-        <AddMovieForm onPublishMovie={handlePublishMovie} />
+        <AddMovieForm onSubmit={handlePublishMovie} />
       )}
     </Styled.Modal>
   )

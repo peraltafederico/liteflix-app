@@ -1,16 +1,27 @@
 import React, { ReactElement, useCallback, useEffect, useState } from 'react'
+import { Field, Formik } from 'formik'
+import * as Yup from 'yup'
 import Input from '../../../UI/Input/Input'
 import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
 
 interface Props {
-  onPublishMovie: () => void
+  onSubmit: (values: any) => void
 }
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required('Required'),
+  category: Yup.string().required('Required'),
+  imgUrl: Yup.string().required('Required'),
+})
 
 const xhr = new XMLHttpRequest()
 
-export default function AddMovieForm({ onPublishMovie }: Props): ReactElement {
+// TODO: Add types
+// TODO: Replace xhr by axios
+
+export default function AddMovieForm({ onSubmit }: Props): ReactElement {
   const [uploading, setUploading] = useState(false)
   const [completed, setCompleted] = useState(false)
   const [error, setError] = useState(false)
@@ -50,12 +61,12 @@ export default function AddMovieForm({ onPublishMovie }: Props): ReactElement {
     return () => xhr.abort()
   }, [])
 
-  const handleDrop = useCallback(([acceptedFile]) => {
+  const handleDrop = useCallback(([acceptedFile], setImgUrl) => {
     setFile(acceptedFile)
-    sendFile(acceptedFile)
+    sendFile(acceptedFile, setImgUrl)
   }, [])
 
-  const sendFile = (acceptedFile: Blob) => {
+  const sendFile = (acceptedFile: Blob, setImgUrl: any) => {
     setUploading(true)
 
     const data = new FormData()
@@ -63,6 +74,8 @@ export default function AddMovieForm({ onPublishMovie }: Props): ReactElement {
 
     xhr.open('POST', 'https://httpbin.org/post')
     xhr.send(data)
+
+    setImgUrl()
   }
 
   const clean = () => {
@@ -70,41 +83,60 @@ export default function AddMovieForm({ onPublishMovie }: Props): ReactElement {
     setProgress(0)
   }
 
-  const handleRetry = () => {
+  const handleRetry = (setImgUrl: any) => {
     clean()
-    sendFile(file)
+    sendFile(file, setImgUrl)
   }
 
   const handleCancel = () => xhr.abort()
 
   return (
-    <>
-      {uploading || completed || error ? (
-        <AddMovieProgress
-          onCancel={handleCancel}
-          onRetry={handleRetry}
-          error={error}
-          progress={progress}
-          uploading={uploading}
-        />
-      ) : (
-        <AddMovieDropzone onDrop={handleDrop} />
+    <Formik
+      initialValues={{ name: '', category: '', imgUrl: '' }}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+      validateOnMount={true}
+    >
+      {({ submitForm, isValid }) => (
+        <Styled.Form>
+          <Field type="hidden" name="imgUrl">
+            {({ form }: any) => {
+              const setImgUrl = () => form.setFieldValue('imgUrl', 'hola')
+
+              return uploading || completed || error ? (
+                <AddMovieProgress
+                  onCancel={handleCancel}
+                  onRetry={() => handleRetry(setImgUrl)}
+                  error={error}
+                  progress={progress}
+                  uploading={uploading}
+                />
+              ) : (
+                <AddMovieDropzone
+                  onDrop={(files) => handleDrop(files, setImgUrl)}
+                />
+              )
+            }}
+          </Field>
+          <Styled.InputsContainer>
+            <Styled.InputContainer>
+              <Input name="name" label="Nombre de la película" />
+            </Styled.InputContainer>
+            <Styled.InputContainer>
+              <Input name="category" label="Categoría" />
+            </Styled.InputContainer>
+          </Styled.InputsContainer>
+
+          <Styled.Footer>
+            <Styled.Button
+              disabled={!isValid}
+              onClick={submitForm}
+              text="Subir Película"
+              type="button"
+            />
+          </Styled.Footer>
+        </Styled.Form>
       )}
-      <Styled.InputsContainer>
-        <Styled.InputContainer>
-          <Input label="Nombre de la película" />
-        </Styled.InputContainer>
-        <Styled.InputContainer>
-          <Input label="Categoría" />
-        </Styled.InputContainer>
-      </Styled.InputsContainer>
-      <Styled.Footer>
-        <Styled.Button
-          disabled={error || !completed}
-          onClick={onPublishMovie}
-          text="Subir Película"
-        />
-      </Styled.Footer>
-    </>
+    </Formik>
   )
 }
