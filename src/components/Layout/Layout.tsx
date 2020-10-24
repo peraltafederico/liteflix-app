@@ -38,7 +38,7 @@ export default function Layout({
   notification,
 }: Props): ReactElement {
   const [showDrawer, setShowDrawer] = useState(false)
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(true)
 
   const handleToggleDrawer = () => setShowDrawer(!showDrawer)
 
