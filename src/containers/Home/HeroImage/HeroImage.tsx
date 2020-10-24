@@ -31,10 +31,9 @@ export default function HeroImage(): ReactElement {
           <Styled.TextContainer>
             <Styled.ParagraphTitle>Ver temporada 1</Styled.ParagraphTitle>
             <Styled.Paragraph>
-              Ver temporada 1 Lorem ipsum dolor amet chicharrones dreamcatcher
-              hammock bushwick hell of, ethical 3 wolf moon celiac neutra
-              mumblecore four dollar toast. Slow-carb post-ironic kickstarter
-              synth franzen.
+              Lorem ipsum dolor amet chicharrones dreamcatcher hammock bushwick
+              hell of, ethical 3 wolf moon celiac neutra mumblecore four dollar
+              toast. Slow-carb post-ironic kickstarter synth franzen.
             </Styled.Paragraph>
           </Styled.TextContainer>
         )}

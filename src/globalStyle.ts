@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #000000;
   }
 
-  span, a, p,  h2 {
+  span, a, p, h2 {
     text-decoration: none;
     font-stretch: normal;
     font-style: normal;
