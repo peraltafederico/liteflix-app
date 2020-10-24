@@ -96,6 +96,7 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
       onSubmit={onSubmit}
       validationSchema={validationSchema}
       validateOnMount={true}
+      isInitialValid={false}
     >
       {({ submitForm, isValid }) => (
         <Styled.Form>
