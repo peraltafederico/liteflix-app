@@ -24,7 +24,7 @@ export default function AddMovieSuccess({
           </>
         </Styled.Text>
       </Styled.Feedback>
-      <Styled.Button onClick={onClose} text="Cerrar" />
+      <Styled.Button onClick={onClose} text="Cerrar" type="button" />
     </>
   )
 }
