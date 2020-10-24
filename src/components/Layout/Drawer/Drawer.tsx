@@ -11,6 +11,7 @@ interface Props {
     value: string
   }[]
   onClose: () => void
+  onClickAddMovie: () => void
   show: boolean
 }
 
@@ -19,6 +20,7 @@ export default function Drawer({
   sections,
   onClose,
   show,
+  onClickAddMovie,
 }: Props): ReactElement {
   return (
     <>
@@ -51,6 +53,7 @@ export default function Drawer({
         <ExtensibleButton
           extensibleText="Agregar película"
           styles={{ marginBottom: 25 }}
+          onClick={onClickAddMovie}
         >
           <Styled.PlusIcon src="/images/plus.svg" />
         </ExtensibleButton>

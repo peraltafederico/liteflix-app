@@ -5,7 +5,6 @@ export const Container = styled.button<{ disabled?: boolean }>`
   max-height: 40px;
   padding: 11px;
   justify-content: center;
-  /* opacity: 0.5; */
   border-radius: 20px;
   background-color: ${(props) => (props.disabled ? '#dedede' : '#000000')};
   display: flex;

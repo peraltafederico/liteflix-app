@@ -5,23 +5,16 @@ interface Props {
   onClick: () => void
   children: React.ReactNode
   disabled?: boolean
-  className?: string
 }
 
 export default function BaseButton({
   onClick,
   children,
   disabled,
-  className,
   ...props
 }: Props): ReactElement {
   return (
-    <Styled.Container
-      {...props}
-      className={className}
-      disabled={disabled}
-      onClick={onClick}
-    >
+    <Styled.Container disabled={disabled} onClick={onClick} {...props}>
       {children}
     </Styled.Container>
   )
