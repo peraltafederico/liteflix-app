@@ -19,6 +19,7 @@ const validationSchema = Yup.object().shape({
 const xhr = new XMLHttpRequest()
 
 // TODO: Add types
+// TODO: Replace xhr by axios
 
 export default function AddMovieForm({ onSubmit }: Props): ReactElement {
   const [uploading, setUploading] = useState(false)
