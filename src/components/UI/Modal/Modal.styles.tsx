@@ -6,7 +6,7 @@ export const Container = styled.div<{ show: boolean }>`
   top: 50%;
   left: 50%;
   width: 100%;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 10px;
   z-index: 99999;
   /* transition: all 0.2s 0s ease-in-out; */
