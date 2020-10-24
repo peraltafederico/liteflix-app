@@ -8,6 +8,7 @@ interface Movie {
   name: string
   category: string
 }
+
 interface Props {
   onClose: () => void
   show: boolean
