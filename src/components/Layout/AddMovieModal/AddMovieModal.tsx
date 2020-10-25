@@ -20,7 +20,11 @@ interface Props {
 export default function AddMovieModal({ onClose, show }: Props): ReactElement {
   const [movie, setMovie] = useState({} as Movie)
 
-  const handlePublishMovie = (values: Movie) => setMovie(values)
+  const handlePublishMovie = (values: Movie) => {
+    console.log(values)
+
+    setMovie(values)
+  }
 
   const success = !isEmpty(movie)
 

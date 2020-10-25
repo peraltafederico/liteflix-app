@@ -1,10 +1,22 @@
 import React, { ReactElement, useCallback, useEffect, useState } from 'react'
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup'
+import * as dotenv from 'dotenv'
 import Input from '../../../UI/Input/Input'
 import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
+
+// TODO: Add types
+// TODO: Add config file
+
+dotenv.config()
+
+const {
+  REACT_APP_CLOUDINARY_BASE_URL,
+  REACT_APP_CLOUDINARY_UPLOAD_PRESET,
+  REACT_APP_CLOUDINARY_CLOUD_NAME,
+} = process.env
 
 interface Props {
   onSubmit: (values: any) => void
@@ -16,10 +28,9 @@ const validationSchema = Yup.object().shape({
   imgUrl: Yup.string().required('Required'),
 })
 
-const xhr = new XMLHttpRequest()
+// ? Replace xhr by axios?
 
-// TODO: Add types
-// TODO: Replace xhr by axios
+const xhr = new XMLHttpRequest()
 
 export default function AddMovieForm({ onSubmit }: Props): ReactElement {
   const [uploading, setUploading] = useState(false)
@@ -27,6 +38,7 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
   const [error, setError] = useState(false)
   const [progress, setProgress] = useState(0)
   const [file, setFile] = useState({} as Blob)
+  const [imgUrl, setImgUrl] = useState('')
 
   useEffect(() => {
     xhr.upload.onprogress = (event) => {
@@ -54,6 +66,9 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
         return
       }
 
+      const { url } = JSON.parse(xhr.response)
+
+      setImgUrl(url)
       setUploading(false)
       setCompleted(true)
     }
@@ -61,21 +76,24 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
     return () => xhr.abort()
   }, [])
 
-  const handleDrop = useCallback(([acceptedFile], setImgUrl) => {
+  const handleDrop = useCallback(([acceptedFile]) => {
     setFile(acceptedFile)
-    sendFile(acceptedFile, setImgUrl)
+    sendFile(acceptedFile)
   }, [])
 
-  const sendFile = (acceptedFile: Blob, setImgUrl: any) => {
+  const sendFile = (acceptedFile: Blob) => {
     setUploading(true)
 
     const data = new FormData()
     data.append('file', acceptedFile)
+    data.append('upload_preset', REACT_APP_CLOUDINARY_UPLOAD_PRESET as string)
 
-    xhr.open('POST', 'https://httpbin.org/post')
+    xhr.open(
+      'POST',
+      `${REACT_APP_CLOUDINARY_BASE_URL}/v1_1/${REACT_APP_CLOUDINARY_CLOUD_NAME}/upload`
+    )
+
     xhr.send(data)
-
-    setImgUrl()
   }
 
   const clean = () => {
@@ -83,9 +101,9 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
     setProgress(0)
   }
 
-  const handleRetry = (setImgUrl: any) => {
+  const handleRetry = () => {
     clean()
-    sendFile(file, setImgUrl)
+    sendFile(file)
   }
 
   const handleCancel = () => xhr.abort()
@@ -102,20 +120,20 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
         <Styled.Form>
           <Field type="hidden" name="imgUrl">
             {({ form }: any) => {
-              const setImgUrl = () => form.setFieldValue('imgUrl', 'hola')
+              if (form.values.imgUrl !== imgUrl) {
+                form.setFieldValue('imgUrl', imgUrl)
+              }
 
               return uploading || completed || error ? (
                 <AddMovieProgress
                   onCancel={handleCancel}
-                  onRetry={() => handleRetry(setImgUrl)}
+                  onRetry={() => handleRetry()}
                   error={error}
                   progress={progress}
                   uploading={uploading}
                 />
               ) : (
-                <AddMovieDropzone
-                  onDrop={(files) => handleDrop(files, setImgUrl)}
-                />
+                <AddMovieDropzone onDrop={(files) => handleDrop(files)} />
               )
             }}
           </Field>
