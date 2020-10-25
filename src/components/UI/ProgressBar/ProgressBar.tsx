@@ -6,10 +6,14 @@ interface Props {
   error: boolean
 }
 
-export default function ProgressBar({ progress, error }: Props): ReactElement {
+export default function ProgressBar({
+  progress,
+  error,
+  ...props
+}: Props): ReactElement {
   return (
     <Styled.Container>
-      <Styled.Progress progress={progress} error={error} />
+      <Styled.Progress progress={progress} error={error} {...props} />
     </Styled.Container>
   )
 }
