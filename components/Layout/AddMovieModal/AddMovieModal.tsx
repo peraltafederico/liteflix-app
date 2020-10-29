@@ -6,11 +6,6 @@ import AddMovieForm from './AddMovieForm/AddMovieForm'
 import api from '../../../services'
 import AddMovieSuccess from './AddMovieSuccess/AddMovieSuccess'
 
-interface Movie {
-  name: string
-  category: string
-}
-
 interface Props {
   onClose: () => void
   show: boolean
