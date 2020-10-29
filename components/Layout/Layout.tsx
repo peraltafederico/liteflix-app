@@ -1,5 +1,4 @@
 import React, { ReactElement, useState } from 'react'
-import Tooltip from './Tooltip/Tooltip'
 import Header from './Header/Header'
 import UserNavigation from './UserNavigation/UserNavigation'
 import * as Styled from './Layout.styles'
@@ -65,10 +64,6 @@ export default function Layout({
           />
         }
       >
-        <Tooltip>
-          <Styled.PlusIcon src="/images/plus.svg" />
-          <Styled.TooltipText>Agregar película</Styled.TooltipText>
-        </Tooltip>
         <ExtensibleButton
           extensibleText="Agregar película"
           styles={{ margin: '0 10px' }}
