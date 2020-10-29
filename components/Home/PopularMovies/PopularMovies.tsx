@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import * as Styled from './PopularMovies.styles'
 
 interface Props {
-  movies: { imageUrl: string }[]
+  movies: { imgUrl: string }[]
 }
 
 export default function UpcomingMovies({ movies }: Props): ReactElement {
@@ -14,9 +14,9 @@ export default function UpcomingMovies({ movies }: Props): ReactElement {
           <Styled.MovieCard
             size="large"
             effects={false}
-            key={`${movie.imageUrl}${key}`}
+            key={`${movie.imgUrl}${key}`}
           >
-            <img src={movie.imageUrl} alt="movie" />
+            <img src={movie.imgUrl} alt="movie" />
           </Styled.MovieCard>
         ))}
       </Styled.MoviesContainer>

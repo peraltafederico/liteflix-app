@@ -2,17 +2,29 @@ import React, { ReactElement } from 'react'
 import useWindowsSize from '../../../hooks/useWindowsSize'
 import * as Styled from './HeroImage.styles'
 
-export default function HeroImage(): ReactElement {
+interface Props {
+  title: string
+  overview: string
+  imgUrl: string
+  paragraphTitle?: string
+}
+
+export default function HeroImage({
+  title,
+  overview,
+  imgUrl,
+  paragraphTitle
+}: Props): ReactElement {
   const { desktop, mobile, tablet } = useWindowsSize()
 
   return (
-    <Styled.Container>
+    <Styled.Container background={imgUrl}>
       <Styled.Content>
         <Styled.TextAboveTitle>
           ORIGINAL DE <Styled.HighlightText>LITEFLIX</Styled.HighlightText>
         </Styled.TextAboveTitle>
         <Styled.Main>
-          <Styled.Title>Kids at school</Styled.Title>
+          <Styled.Title>{title}</Styled.Title>
           <Styled.ActionsContainer>
             <Styled.Button onClick={() => console.log('a')}>
               <Styled.PlayIcon src="/images/play.svg" />
@@ -29,12 +41,8 @@ export default function HeroImage(): ReactElement {
         </Styled.Main>
         {(tablet || desktop) && (
           <Styled.TextContainer>
-            <Styled.ParagraphTitle>Ver temporada 1</Styled.ParagraphTitle>
-            <Styled.Paragraph>
-              Lorem ipsum dolor amet chicharrones dreamcatcher hammock bushwick
-              hell of, ethical 3 wolf moon celiac neutra mumblecore four dollar
-              toast. Slow-carb post-ironic kickstarter synth franzen.
-            </Styled.Paragraph>
+            {paragraphTitle && <Styled.ParagraphTitle>Ver temporada 1</Styled.ParagraphTitle>}
+            <Styled.Paragraph>{overview}</Styled.Paragraph>
           </Styled.TextContainer>
         )}
       </Styled.Content>

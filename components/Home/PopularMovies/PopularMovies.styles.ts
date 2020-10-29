@@ -19,10 +19,12 @@ export const Container = styled.div`
   max-width: 1112px;
   margin: 0 auto;
   margin-top: 25px;
+  margin-bottom: 25px;
 
   ${tablet} {
     padding: 0 30px;
     margin-top: 50px;
+    margin-bottom: 25px;
   }
 `
 
