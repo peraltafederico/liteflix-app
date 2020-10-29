@@ -1,8 +1,7 @@
 import React, { ReactElement } from 'react'
-import Layout from '../../components/Layout/Layout'
-import UpcomingMovies from './UpcomingMovies/UpcomingMovies'
-import HeroImage from './HeroImage/HeroImage'
-import PopularMovies from './PopularMovies/PopularMovies'
+import HeroImage from '../components/Home/HeroImage/HeroImage'
+import UpcomingMovies from '../components/Home/UpcomingMovies/UpcomingMovies'
+import PopularMovies from '../components/Home/PopularMovies/PopularMovies'
 
 const upcomingMovies = [
   {
@@ -36,10 +35,10 @@ const popularMovies = [
 
 export default function Home(): ReactElement {
   return (
-    <Layout>
+    <>
       <HeroImage />
       <UpcomingMovies movies={upcomingMovies} />
       <PopularMovies movies={popularMovies} />
-    </Layout>
+    </>
   )
 }

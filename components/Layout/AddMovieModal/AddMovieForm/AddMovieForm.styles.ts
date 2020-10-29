@@ -32,7 +32,7 @@ export const Button = styled(AddMovieButton)`
   width: 350px;
 `
 
-export const Form = styled(FormikForm)`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   flex: 1;

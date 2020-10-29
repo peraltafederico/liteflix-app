@@ -17,7 +17,7 @@ export default function AddMovieButton({
   ...props
 }: Props): ReactElement {
   return (
-    <Styled.Button disabled={disabled} onClick={onClick} {...props} type={type}>
+    <Styled.Button disabled={disabled} onClick={onClick} type={type} {...props}>
       {text}
     </Styled.Button>
   )

@@ -13,5 +13,8 @@ export const Progress = styled.div<{ progress: number; error: boolean }>`
   border-radius: 10px;
   background-color: ${(props) => (props.error ? '#ff0000' : '#7ed321')};
   width: ${(props) => `${props.error ? `100%` : `${props.progress}%`} `};
-  transition: width 0.5s cubic-bezier(1, 0, 0, 1);
+  transition: ${(props) =>
+    props.error || props.progress === 0
+      ? 'none'
+      : 'width 0.5s cubic-bezier(1, 0, 0, 1)'};
 `
