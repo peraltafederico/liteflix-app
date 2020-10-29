@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Form as FormikForm } from 'formik'
 import AddMovieButton from '../AddMovieButton/AddMovieButton'
 
 export const InputContainer = styled.div`
