@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import BaseButton from '../../../components/UI/BaseButton/BaseButton'
+import BaseButton from '../../UI/BaseButton/BaseButton'
 import { tablet } from '../../../utils/breakpoints'
 
 export const Container = styled.div<{ background: string }>`
   height: 100vh;
   background-size: cover;
   background-position: center;
-  background-image: ${props => `url('${props.background}')`};
+  background-image: ${(props) => `url('${props.background}')`};
   display: flex;
   align-items: flex-end;
 

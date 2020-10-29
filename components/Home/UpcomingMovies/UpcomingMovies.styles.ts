@@ -1,15 +1,5 @@
 import styled from 'styled-components'
-import Card from '../../../components/UI/MovieCard/MovieCard'
 import { tablet } from '../../../utils/breakpoints'
-
-export const MovieCard = styled(Card)`
-  margin-bottom: 10px;
-
-  ${tablet} {
-    margin-right: 23px;
-    margin-bottom: 0;
-  }
-`
 
 export const Container = styled.div`
   display: flex;
@@ -27,14 +17,4 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   margin: 0 0 10px 0;
-`
-
-export const MoviesContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  ${tablet} {
-    flex-wrap: nowrap;
-  }
 `

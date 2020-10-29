@@ -1,12 +1,13 @@
 import api from './api'
 
+const create = (payload) => api.post('/movie', payload)
 
-const getMainMovies = () => api.get('/movie/main')
+const getMain = () => api.get('/movie/main')
 
-const getGroupedByGenreMovies = () => api.get('/movie/grouped-by-genre')
-
+const getGroupedByGenre = () => api.get('/movie/grouped-by-genre')
 
 export default {
-    getMainMovies,
-    getGroupedByGenreMovies
+  getMain,
+  getGroupedByGenre,
+  create,
 }
