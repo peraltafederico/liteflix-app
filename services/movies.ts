@@ -1,6 +1,6 @@
 import api from './api'
 
-const create = (payload) => api.post('/movie', payload)
+const create = (payload: any) => api.post('/movie', payload)
 
 const getMain = () => api.get('/movie/main')
 

@@ -20,7 +20,7 @@ export default function AddMovieModal({ onClose, show }: Props): ReactElement {
     { isSuccess, data: res, isLoading },
   ] = useMutation((movie: any) => api.movies.create(movie))
 
-  const handlePublishMovie = async (values) => {
+  const handlePublishMovie = async (values: any) => {
     await mutate({
       ...values,
       tmdbGenreId: toNumber(values.tmdbGenreId),

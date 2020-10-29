@@ -5,36 +5,6 @@ import PopularMovies from '../components/Home/PopularMovies/PopularMovies'
 import api from '../services'
 import GenreMovies from '../components/Home/GenreMovies/GenreMovies'
 
-const upcomingMovies = [
-  {
-    imageUrl: '/images/peaky-blinders.jpg',
-  },
-  {
-    imageUrl: '/images/peaky-blinders.jpg',
-  },
-  {
-    imageUrl: '/images/peaky-blinders.jpg',
-  },
-  {
-    imageUrl: '/images/peaky-blinders.jpg',
-  },
-]
-
-const popularMovies = [
-  {
-    imageUrl: '/images/borrar_large.png',
-  },
-  {
-    imageUrl: '/images/borrar_large.png',
-  },
-  {
-    imageUrl: '/images/borrar_large.png',
-  },
-  {
-    imageUrl: '/images/borrar_large.png',
-  },
-]
-
 export default function Home({
   featured,
   upcoming,
@@ -50,7 +20,7 @@ export default function Home({
       />
       <UpcomingMovies movies={upcoming} />
       <PopularMovies movies={popular} />
-      {groupedByGenre.map((group) => (
+      {groupedByGenre.map((group: any) => (
         <GenreMovies
           title={group.genre}
           key={group.name}
