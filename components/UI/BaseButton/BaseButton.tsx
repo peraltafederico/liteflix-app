@@ -19,8 +19,8 @@ export default function BaseButton({
     <Styled.Container
       disabled={disabled}
       onClick={onClick}
-      {...props}
       type={type}
+      {...props}
     >
       {children}
     </Styled.Container>
