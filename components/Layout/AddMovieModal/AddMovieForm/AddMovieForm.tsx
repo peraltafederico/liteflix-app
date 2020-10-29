@@ -20,15 +20,19 @@ const {
 
 interface Props {
   onSubmit: (values: any) => void
+  loading: boolean
 }
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
-  category: Yup.string().required('Required'),
+  title: Yup.string().required('Required'),
+  tmdbGenreId: Yup.number().required('Required'),
   imgUrl: Yup.string().required('Required'),
 })
 
-export default function AddMovieForm({ onSubmit }: Props): ReactElement {
+export default function AddMovieForm({
+  onSubmit,
+  loading,
+}: Props): ReactElement {
   const [upload, setUpload] = useState(false)
   const [completed, setCompleted] = useState(false)
   const [error, setError] = useState(false)
@@ -43,7 +47,7 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
     values,
     setFieldValue,
   } = useFormik({
-    initialValues: { name: '', category: '', imgUrl: '' },
+    initialValues: { title: '', tmdbGenreId: '', imgUrl: '' },
     onSubmit,
     validationSchema,
     validateOnMount: true,
@@ -129,28 +133,30 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
         <Styled.InputsContainer>
           <Styled.InputContainer>
             <Input
-              name="name"
+              name="title"
               label="Nombre de la película"
               onChange={handleChange}
-              value={values.name}
+              value={values.title}
             />
           </Styled.InputContainer>
           <Styled.InputContainer>
             <Input
-              name="category"
+              name="tmdbGenreId"
               label="Categoría"
+              {...{ type: 'number' }}
               onChange={handleChange}
-              value={values.category}
+              value={values.tmdbGenreId}
             />
           </Styled.InputContainer>
         </Styled.InputsContainer>
 
         <Styled.Footer>
           <Styled.Button
-            disabled={!isValid}
+            disabled={loading || !isValid}
             onClick={submitForm}
             text="Subir Película"
             type="button"
+            loading={loading}
           />
         </Styled.Footer>
       </Styled.Form>

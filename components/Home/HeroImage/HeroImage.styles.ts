@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import BaseButton from '../../../components/UI/BaseButton/BaseButton'
+import BaseButton from '../../UI/BaseButton/BaseButton'
 import { tablet } from '../../../utils/breakpoints'
 
-export const Container = styled.div`
+export const Container = styled.div<{ background: string }>`
   height: 100vh;
   background-size: cover;
   background-position: center;
-  background-image: url('/images/peaky-blinders.jpg');
+  background-image: ${(props) => `url('${props.background}')`};
   display: flex;
   align-items: flex-end;
 
@@ -54,7 +54,7 @@ export const HighlightText = styled.span`
 `
 
 export const Title = styled.h1`
-  max-width: 392px;
+  max-width: 660px;
   font-size: 72px;
   font-family: 'RobotoSlab';
   color: #fff;
@@ -102,7 +102,7 @@ export const ParagraphTitle = styled.h2`
 `
 
 export const Paragraph = styled.p`
-  margin: 0;
+  margin: 25px 0 0 0;
   font-size: 18px;
   font-weight: normal;
   max-width: 537px;
