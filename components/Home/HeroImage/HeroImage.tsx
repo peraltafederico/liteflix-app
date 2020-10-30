@@ -1,5 +1,6 @@
+import { noop } from 'lodash'
 import React, { ReactElement } from 'react'
-import useWindowsSize from '../../../hooks/useWindowsSize'
+import useBreakpoints from '../../../hooks/useBreakpoints'
 import * as Styled from './HeroImage.styles'
 
 interface Props {
@@ -13,9 +14,9 @@ export default function HeroImage({
   title,
   overview,
   imgUrl,
-  paragraphTitle
+  paragraphTitle,
 }: Props): ReactElement {
-  const { desktop, mobile, tablet } = useWindowsSize()
+  const { desktop, mobile, tablet } = useBreakpoints()
 
   return (
     <Styled.Container background={imgUrl}>
@@ -26,22 +27,26 @@ export default function HeroImage({
         <Styled.Main>
           <Styled.Title>{title}</Styled.Title>
           <Styled.ActionsContainer>
-            <Styled.Button onClick={() => console.log('a')}>
+            <Styled.Button onClick={noop}>
               <Styled.PlayIcon src="/images/play.svg" />
               <Styled.ButtonText>Reproducir</Styled.ButtonText>
             </Styled.Button>
-            {mobile && <Styled.CirclePlusIcon src="/images/circle-plus.svg" />}
-            {(tablet || desktop) && (
-              <Styled.Button onClick={() => console.log('a')}>
+            {(mobile || tablet) && (
+              <Styled.CirclePlusIcon src="/images/circle-plus.svg" />
+            )}
+            {desktop && (
+              <Styled.Button onClick={noop}>
                 <Styled.PlusIcon src="/images/plus.svg" />
                 <Styled.ButtonText>Mi Lista</Styled.ButtonText>
               </Styled.Button>
             )}
           </Styled.ActionsContainer>
         </Styled.Main>
-        {(tablet || desktop) && (
+        {desktop && (
           <Styled.TextContainer>
-            {paragraphTitle && <Styled.ParagraphTitle>Ver temporada 1</Styled.ParagraphTitle>}
+            {paragraphTitle && (
+              <Styled.ParagraphTitle>Ver temporada 1</Styled.ParagraphTitle>
+            )}
             <Styled.Paragraph>{overview}</Styled.Paragraph>
           </Styled.TextContainer>
         )}

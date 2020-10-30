@@ -4,7 +4,7 @@ import { tablet } from '../../../utils/breakpoints'
 export const Container = styled.div<{ size: 'small' | 'large' }>`
   width: 100%;
   position: relative;
-  width: ${(props) => (props.size === 'large' ? '163px' : '330.7px')};
+  width: ${(props) => (props.size === 'large' ? '163px' : '100%')};
   height: ${(props) => (props.size === 'large' ? '328px' : '201px')};
   cursor: pointer;
 

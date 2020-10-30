@@ -4,10 +4,16 @@ interface Breakpoints {
   mobile: boolean
   tablet: boolean
   desktop: boolean
+  landscape: boolean
 }
 
 function getBreakpoint(width: number) {
-  const breakpoints = { mobile: false, desktop: false, tablet: false }
+  const breakpoints = {
+    mobile: false,
+    desktop: false,
+    tablet: false,
+  }
+
   switch (true) {
     case width < 735:
       breakpoints.mobile = true
@@ -24,12 +30,15 @@ function getBreakpoint(width: number) {
   }
 }
 
-function useWindowsSize(): Breakpoints {
-  const [windowsSize, setWindowsSize] = useState({} as Breakpoints)
+function useBreakpoints(): Breakpoints {
+  const [breakpoints, setBreakpoints] = useState({} as Breakpoints)
 
   useEffect(() => {
     const handleResize = (): void => {
-      setWindowsSize(getBreakpoint(window.innerWidth))
+      setBreakpoints({
+        ...getBreakpoint(window.innerWidth),
+        landscape: window.innerWidth > window.innerHeight,
+      })
     }
 
     window.addEventListener('resize', handleResize)
@@ -39,7 +48,7 @@ function useWindowsSize(): Breakpoints {
     return (): void => window.removeEventListener('resize', handleResize)
   }, [])
 
-  return windowsSize
+  return breakpoints
 }
 
-export default useWindowsSize
+export default useBreakpoints

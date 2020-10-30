@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import BaseButton from '../../UI/BaseButton/BaseButton'
-import { tablet } from '../../../utils/breakpoints'
+import { desktop } from '../../../utils/breakpoints'
 
 export const Container = styled.div<{ background: string }>`
   height: 100vh;
@@ -10,7 +10,7 @@ export const Container = styled.div<{ background: string }>`
   display: flex;
   align-items: flex-end;
 
-  ${tablet} {
+  ${desktop} {
     display: block;
     align-items: initial;
   }
@@ -25,7 +25,7 @@ export const Content = styled.div`
   align-items: center;
   margin-bottom: 120px;
 
-  ${tablet} {
+  ${desktop} {
     padding: 16vh 30px 0 30px;
     display: block;
     justify-content: initial;
@@ -38,7 +38,7 @@ export const TextAboveTitle = styled.h2`
   font-weight: normal;
   margin: 0;
 
-  ${tablet} {
+  ${desktop} {
     margin: 0 0 15px 0;
     font-size: 24px;
   }
@@ -48,7 +48,7 @@ export const HighlightText = styled.span`
   font-weight: bold;
   font-size: 18px;
 
-  ${tablet} {
+  ${desktop} {
     font-size: 24px;
   }
 `
@@ -61,7 +61,7 @@ export const Title = styled.h1`
   line-height: 1;
   margin: 0;
 
-  ${tablet} {
+  ${desktop} {
     margin: 0 0 15px 0;
     line-height: 0.82;
     font-size: 110px;
@@ -84,7 +84,7 @@ export const ActionsContainer = styled.div`
   display: flex;
   margin-top: 5px;
 
-  ${tablet} {
+  ${desktop} {
     & ${Button}:nth-child(1) {
       margin-right: 10px;
     }
@@ -117,7 +117,7 @@ export const Main = styled.div`
   text-align: center;
   align-items: center;
 
-  ${tablet} {
+  ${desktop} {
     align-items: initial;
     text-align: initial;
   }
