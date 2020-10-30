@@ -11,7 +11,7 @@ export const MovieCard = styled(Card)`
     flex-shrink: 0;
 
     &:not(:last-child) {
-      margin-right: 15px;
+      margin-right: 30px;
     }
   }
 `
@@ -25,7 +25,19 @@ export const MoviesContainer = styled.div`
     justify-content: flex-start;
     flex-wrap: nowrap;
     overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #9b9b9b #f3f3f3;
+
     ::-webkit-scrollbar {
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f3f3f3;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #9b9b9b;
+      border-radius: 5.5px;
     }
   }
 `

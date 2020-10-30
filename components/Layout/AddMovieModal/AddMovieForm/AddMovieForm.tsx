@@ -51,6 +51,7 @@ export default function AddMovieForm({
     onSubmit,
     validationSchema,
     validateOnMount: true,
+    isInitialValid: false,
   })
 
   useEffect(() => {
