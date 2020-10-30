@@ -3,8 +3,7 @@ import Card from '../UI/MovieCard/MovieCard'
 import { tablet } from '../../utils/breakpoints'
 
 export const MovieCard = styled(Card)`
-  /* margin-bottom: 10px; */
-  /* margin: 1px; */
+  margin-bottom: 10px;
 
   ${tablet} {
     margin-bottom: 0;
@@ -19,7 +18,7 @@ export const MovieCard = styled(Card)`
 export const MoviesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 
   ${tablet} {
     justify-content: flex-start;

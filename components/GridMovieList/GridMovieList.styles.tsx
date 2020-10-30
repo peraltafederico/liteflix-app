@@ -6,7 +6,8 @@ export const MovieCard = styled(Card)`
   margin-bottom: 10px;
 
   ${tablet} {
-    width: 212px;
+    margin-bottom: 40px;
+    width: 218px;
   }
 
   ${desktop} {
@@ -22,11 +23,12 @@ export const MoviesContainer = styled.div`
   ${tablet} {
     display: grid;
     justify-content: space-between;
-    grid-gap: 1em;
-    grid-template-columns: repeat(auto-fit, 212px);
+    grid-template-columns: repeat(auto-fit, 218px);
+    grid-gap: 1px;
   }
 
   ${desktop} {
+    grid-gap: 1em;
     grid-template-columns: repeat(auto-fit, 255px);
   }
 `
