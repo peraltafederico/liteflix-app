@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { useMutation } from 'react-query'
+import { queryCache, useMutation } from 'react-query'
 import { toNumber } from 'lodash'
 import * as Styled from './AddMovieModal.styles'
 import AddMovieForm from './AddMovieForm/AddMovieForm'
@@ -15,10 +15,14 @@ interface Props {
 // TODO: Add types
 
 export default function AddMovieModal({ onClose, show }: Props): ReactElement {
-  const [
-    mutate,
-    { isSuccess, data: res, isLoading },
-  ] = useMutation((movie: any) => api.movies.create(movie))
+  const [mutate, { isSuccess, data: res, isLoading }] = useMutation(
+    (movie: any) => api.movies.create(movie),
+    {
+      onSuccess: () => {
+        queryCache.refetchQueries('genreMovies')
+      },
+    }
+  )
 
   const handlePublishMovie = async (values: any) => {
     await mutate({
