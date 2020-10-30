@@ -1,9 +1,11 @@
 import React, { ReactElement } from 'react'
+import { useQuery } from 'react-query'
 import HeroImage from '../components/Home/HeroImage/HeroImage'
 import UpcomingMovies from '../components/Home/UpcomingMovies/UpcomingMovies'
 import PopularMovies from '../components/Home/PopularMovies/PopularMovies'
 import api from '../services'
 import GenreMovies from '../components/Home/GenreMovies/GenreMovies'
+import HomeSpinner from '../components/Home/HomeSpinner/HomeSpinner'
 
 export default function Home({
   featured,
@@ -11,6 +13,14 @@ export default function Home({
   popular,
   groupedByGenre,
 }: any): ReactElement {
+  const { data: response, isFetching } = useQuery(
+    'genreMovies',
+    api.movies.getGroupedByGenre,
+    {
+      initialData: groupedByGenre,
+    }
+  )
+
   return (
     <>
       <HeroImage
@@ -20,25 +30,31 @@ export default function Home({
       />
       <UpcomingMovies movies={upcoming} />
       <PopularMovies movies={popular} />
-      {groupedByGenre.map((group: any) => (
-        <GenreMovies
-          title={group.genre}
-          key={group.name}
-          movies={group.movies}
-        />
-      ))}
+      {isFetching ? (
+        <HomeSpinner />
+      ) : (
+        (response?.data || groupedByGenre).map((group: any) => (
+          <GenreMovies
+            title={group.genre}
+            key={group.genre}
+            movies={group.movies}
+          />
+        ))
+      )}
     </>
   )
 }
 
-Home.getInitialProps = async () => {
+export async function getStaticProps(): any {
   const [{ data: mainMovies }, { data: genresMovies }] = await Promise.all([
     api.movies.getMain(),
     api.movies.getGroupedByGenre(),
   ])
 
   return {
-    ...mainMovies,
-    groupedByGenre: genresMovies,
+    props: {
+      ...mainMovies,
+      groupedByGenre: genresMovies,
+    },
   }
 }

@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
-import MovieList from '../../MovieList/MovieList'
+import MovieList from '../../FixedMovieList/FixedMovieList'
 import * as Styled from './UpcomingMovies.styles'
 
 interface Props {
   movies: { imgUrl: string }[]
 }
 
-export default function PopularMovies({ movies }: Props): ReactElement {
+export default function UpcomingMovies({ movies }: Props): ReactElement {
   return (
     <Styled.Container>
       <Styled.Title>Proximamente</Styled.Title>
