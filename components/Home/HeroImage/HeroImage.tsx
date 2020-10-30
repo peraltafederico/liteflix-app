@@ -16,7 +16,7 @@ export default function HeroImage({
   imgUrl,
   paragraphTitle,
 }: Props): ReactElement {
-  const { desktop, mobile, tablet, landscape } = useBreakpoints()
+  const { desktop, mobile, tablet } = useBreakpoints()
 
   return (
     <Styled.Container background={imgUrl}>
@@ -31,8 +31,10 @@ export default function HeroImage({
               <Styled.PlayIcon src="/images/play.svg" />
               <Styled.ButtonText>Reproducir</Styled.ButtonText>
             </Styled.Button>
-            {mobile && <Styled.CirclePlusIcon src="/images/circle-plus.svg" />}
-            {(tablet || desktop) && (
+            {(mobile || tablet) && (
+              <Styled.CirclePlusIcon src="/images/circle-plus.svg" />
+            )}
+            {desktop && (
               <Styled.Button onClick={noop}>
                 <Styled.PlusIcon src="/images/plus.svg" />
                 <Styled.ButtonText>Mi Lista</Styled.ButtonText>
@@ -40,7 +42,7 @@ export default function HeroImage({
             )}
           </Styled.ActionsContainer>
         </Styled.Main>
-        {((!landscape && tablet) || desktop) && (
+        {desktop && (
           <Styled.TextContainer>
             {paragraphTitle && (
               <Styled.ParagraphTitle>Ver temporada 1</Styled.ParagraphTitle>
