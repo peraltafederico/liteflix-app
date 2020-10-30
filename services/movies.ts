@@ -4,16 +4,7 @@ const create = (payload: any) => api.post('/movie', payload)
 
 const getMain = () => api.get('/movie/main')
 
-const getGroupedByGenre = async () => {
-  const res = await api.get('/movie/grouped-by-genre')
-  await new Promise((resolve) =>
-    setTimeout(() => {
-      resolve()
-    }, 3000)
-  )
-
-  return res
-}
+const getGroupedByGenre = async () => api.get('/movie/grouped-by-genre')
 
 export default {
   getMain,

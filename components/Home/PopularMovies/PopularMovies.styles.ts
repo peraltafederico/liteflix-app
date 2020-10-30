@@ -6,14 +6,11 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 0 15px;
   max-width: 1112px;
-  margin: 0 auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 25px auto;
 
   ${tablet} {
     padding: 0 30px;
-    margin-top: 50px;
-    margin-bottom: 25px;
+    margin: 50px auto;
   }
 `
 
