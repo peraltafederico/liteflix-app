@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react'
+import Dropdown from '../../UI/Dropdown/Dropdown'
 import NotificationBell from '../NotificationBell/NotificationBell'
 import * as Styled from './UserNavigation.styles'
 
@@ -17,10 +18,12 @@ export default function UserNavigation({
     <Styled.Container>
       <Styled.Section href="">{section}</Styled.Section>
       <NotificationBell notification={notification} />
-      <Styled.User>
-        <Styled.UserIcon src={userPhotoSrc} alt="user" />
-        <Styled.ArrowIcon src="/images/arrow.svg" />
-      </Styled.User>
+      <Dropdown menu={<div style={{ position: 'absolute' }}>HOLAAA</div>}>
+        <Styled.User>
+          <Styled.UserIcon src={userPhotoSrc} alt="user" />
+          <Styled.ArrowIcon src="/images/arrow.svg" />
+        </Styled.User>
+      </Dropdown>
     </Styled.Container>
   )
 }
