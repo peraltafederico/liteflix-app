@@ -7,6 +7,8 @@ import Input from '../../../UI/Input/Input'
 import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
+import Dropdown from '../../../UI/Dropdown/Dropdown'
+import { Option, Select } from './Select/Select'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -28,6 +30,41 @@ const validationSchema = Yup.object().shape({
   tmdbGenreId: Yup.number().required('Required'),
   imgUrl: Yup.string().required('Required'),
 })
+
+const options = [
+  {
+    text: 'Sarasa 1',
+    value: 1,
+  },
+  {
+    text: 'Sarasa 2',
+    value: 2,
+  },
+  {
+    text: 'Sarasa 3',
+    value: 3,
+  },
+  {
+    text: 'Sarasa 4',
+    value: 4,
+  },
+  {
+    text: 'Sarasa 5',
+    value: 5,
+  },
+  {
+    text: 'Sarasa 6',
+    value: 6,
+  },
+  {
+    text: 'Sarasa 7',
+    value: 7,
+  },
+  {
+    text: 'Sarasa 8',
+    value: 8,
+  },
+]
 
 export default function AddMovieForm({
   onSubmit,
@@ -134,20 +171,27 @@ export default function AddMovieForm({
         <Styled.InputsContainer>
           <Styled.InputContainer>
             <Input
-              name="title"
               label="Nombre de la película"
-              onChange={handleChange}
-              value={values.title}
+              inputProps={{
+                name: 'title',
+                onChange: handleChange,
+                value: values.title,
+              }}
             />
           </Styled.InputContainer>
           <Styled.InputContainer>
-            <Input
-              name="tmdbGenreId"
-              label="Categoría"
-              {...{ type: 'number' }}
-              onChange={handleChange}
+            <Select
+              onChange={(value) => setFieldValue('tmdbGenreId', value)}
               value={values.tmdbGenreId}
-            />
+            >
+              {options.map((option) => (
+                <Option
+                  text={option.text}
+                  key={option.text}
+                  value={option.value}
+                />
+              ))}
+            </Select>
           </Styled.InputContainer>
         </Styled.InputsContainer>
 

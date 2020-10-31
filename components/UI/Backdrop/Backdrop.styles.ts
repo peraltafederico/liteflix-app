@@ -8,5 +8,5 @@ export const Container = styled.div<{ transparent?: boolean }>`
   right: 0;
   background-color: ${(props) =>
     props.transparent ? 'transparent' : 'rgba(0, 0, 0, 0.6)'};
-  z-index: 99;
+  z-index: 999;
 `

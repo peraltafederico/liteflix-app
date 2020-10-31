@@ -46,7 +46,7 @@ export default function UserNavigation({
 
   return (
     <Styled.Container>
-      <Styled.Section href="">{section}</Styled.Section>
+      <Styled.Section href="/#">{section}</Styled.Section>
       <NotificationBell notification={notification} />
       <Dropdown menu={<UserNavigationMenu users={users} sections={sections} />}>
         <Styled.User>

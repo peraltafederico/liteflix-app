@@ -27,5 +27,5 @@ export const Label = styled.label`
   letter-spacing: 5px;
   color: #9b9b9b;
   text-transform: uppercase;
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 `
