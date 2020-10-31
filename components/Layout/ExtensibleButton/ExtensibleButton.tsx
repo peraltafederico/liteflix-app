@@ -3,7 +3,7 @@ import * as Styled from './ExtensibleButton.styles'
 
 interface Props {
   children: ReactElement
-  extensibleText: ReactElement
+  extensibleText: React.ReactText
   onClick: () => void
   styles?: CSSProperties
 }

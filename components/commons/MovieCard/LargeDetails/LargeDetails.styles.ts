@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+// TODO: Fix position static !important on images
+
 export const Container = styled.div`
   position: absolute;
   top: 45%;
@@ -12,7 +14,6 @@ export const Container = styled.div`
 `
 
 export const InfoContainer = styled.div`
-  max-width: 108px;
   margin-bottom: 56px;
   margin-left: 12px;
 `
@@ -21,12 +22,17 @@ export const InfoTitle = styled.h2`
   font-size: 18px;
   font-weight: bold;
   margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 200px;
 `
 
 export const InfoText = styled.p`
   margin: 0;
   font-size: 12px;
   line-height: 16px;
+  max-width: 108px;
 `
 
 export const Age = styled.span`

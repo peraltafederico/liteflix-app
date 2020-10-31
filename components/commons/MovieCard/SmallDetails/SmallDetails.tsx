@@ -1,31 +1,52 @@
 import React, { ReactElement } from 'react'
 import * as Styled from './SmallDetails.styles'
 
-export default function SmallDetails(): ReactElement {
+interface Props {
+  title: string
+  genre: string
+}
+
+export default function SmallDetails({ title, genre }: Props): ReactElement {
   return (
-    <Styled.Container>
-      <Styled.InfoContainer>
-        <Styled.ActionsContainer>
-          <Styled.ActionIconContainer>
-            <Styled.AddIcon src="/images/add-list.svg" />
-          </Styled.ActionIconContainer>
-          <Styled.ActionIconContainer>
-            <Styled.LikeIcon src="/images/like.svg" />
-          </Styled.ActionIconContainer>
-        </Styled.ActionsContainer>
-        <Styled.PlayIconContainer>
-          <Styled.PlayIcon src="/images/circle-play.svg" />
-        </Styled.PlayIconContainer>
-        <Styled.MovieDta>
-          <Styled.InfoTitle>Secret City</Styled.InfoTitle>
-          <Styled.InfoText>
-            98% Coincidencia <Styled.Age>+16</Styled.Age> 1h 30 min Suspenso
-          </Styled.InfoText>
-        </Styled.MovieDta>
-      </Styled.InfoContainer>
-      <Styled.ArrowIconContainer>
-        <Styled.ArrowIcon src="/images/thin-arrow.svg" />
-      </Styled.ArrowIconContainer>
-    </Styled.Container>
+    <>
+      <Styled.Container>
+        <Styled.InfoContainer>
+          <Styled.ActionsContainer>
+            <Styled.ActionIconContainer>
+              <Styled.AddIcon src="/images/add-list.svg" />
+            </Styled.ActionIconContainer>
+            <Styled.ActionIconContainer>
+              <Styled.LikeIcon src="/images/like.svg" />
+            </Styled.ActionIconContainer>
+          </Styled.ActionsContainer>
+          <Styled.PlayIconContainer>
+            <Styled.PlayIcon src="/images/circle-play.svg" />
+          </Styled.PlayIconContainer>
+          <Styled.MovieDta>
+            <Styled.InfoTitle>{title}</Styled.InfoTitle>
+            <Styled.InfoText>
+              98% Coincidencia <Styled.Age>+16</Styled.Age> 1h 30 min
+            </Styled.InfoText>
+            <p style={{ margin: 0 }}>{genre}</p>
+          </Styled.MovieDta>
+        </Styled.InfoContainer>
+      </Styled.Container>
+      <div
+        style={{
+          height: 50,
+          position: 'absolute',
+          bottom: -50,
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          cursor: 'default'
+        }}
+      >
+        <Styled.ArrowIconContainer>
+          <Styled.ArrowIcon src="/images/thin-arrow.svg" />
+        </Styled.ArrowIconContainer>
+      </div>
+    </>
   )
 }

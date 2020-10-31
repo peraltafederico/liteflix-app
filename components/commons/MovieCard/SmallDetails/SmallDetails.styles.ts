@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+// TODO: Fix position static !important on images
+
 export const Container = styled.div`
   position: absolute;
   top: 0;
@@ -61,6 +63,11 @@ export const InfoTitle = styled.h2`
   font-size: 18px;
   font-weight: bold;
   margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 230px;
+  line-height: 20px;
 `
 
 export const InfoText = styled.p`
@@ -77,15 +84,16 @@ export const Age = styled.span`
 export const ArrowIconContainer = styled.div`
   width: 39px;
   height: 20px;
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
+  cursor: pointer;
+
+  & img {
+    position: static !important;
+  }
 `
 
 export const ArrowIcon = styled.img``
 
 export const MovieDta = styled.div`
   position: absolute;
-  bottom: 10px;
+  bottom: 7px;
 `
