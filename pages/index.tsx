@@ -45,7 +45,7 @@ export default function Home({
   )
 }
 
-export async function getStaticProps(): any {
+export async function getStaticProps(): Promise<any> {
   const [{ data: mainMovies }, { data: genresMovies }] = await Promise.all([
     api.movies.getMain(),
     api.movies.getGroupedByGenre(),

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { tablet } from '../../../utils/breakpoints'
+import { desktop } from '../../../utils/breakpoints'
 
 export const Container = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   transition: all 0.5s;
   cursor: pointer;
 
-  ${tablet} {
+  ${desktop} {
     justify-content: center;
     max-width: 40px;
   }
@@ -23,7 +23,7 @@ export const Container = styled.div`
     font-size: 14px;
     margin: 0 5px;
 
-    ${tablet} {
+    ${desktop} {
       max-width: 0px;
       overflow: hidden;
       transition: all 0.5s;
@@ -33,7 +33,7 @@ export const Container = styled.div`
   }
 
   &:hover {
-    ${tablet} {
+    ${desktop} {
       max-width: 183px;
 
       & span {

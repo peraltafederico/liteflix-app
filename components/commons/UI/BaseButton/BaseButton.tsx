@@ -4,7 +4,7 @@ import * as Styled from './BaseButton.styles'
 
 interface Props {
   onClick: () => void
-  children: React.ReactNode
+  children: ReactElement | ReactElement[]
   loading?: boolean
   type?: 'button' | 'submit' | 'reset' | undefined
   disabled?: boolean

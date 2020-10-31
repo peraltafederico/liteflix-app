@@ -29,7 +29,7 @@ const sections = [
 ]
 
 interface Props {
-  children: React.ReactNode
+  children: ReactElement
   notification?: boolean
 }
 
@@ -43,7 +43,9 @@ export default function Layout({
   const handleToggleDrawer = () => setShowDrawer(!showDrawer)
 
   const handleToggleModal = () => {
-    setShowDrawer(false)
+    if (showDrawer) {
+      setShowDrawer(false)
+    }
     setShowModal(!showModal)
   }
 

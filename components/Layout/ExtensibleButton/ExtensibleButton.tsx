@@ -2,8 +2,8 @@ import React, { CSSProperties, ReactElement } from 'react'
 import * as Styled from './ExtensibleButton.styles'
 
 interface Props {
-  children: React.ReactNode
-  extensibleText: React.ReactNode
+  children: ReactElement
+  extensibleText: React.ReactText
   onClick: () => void
   styles?: CSSProperties
 }

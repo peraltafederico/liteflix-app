@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import { tablet } from '../../../../utils/breakpoints'
+import { desktop, tablet } from '../../../utils/breakpoints'
+
+export const DetailsContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`
 
 export const Container = styled.div<{ size: 'small' | 'large' }>`
   width: 100%;
@@ -21,5 +26,17 @@ export const Container = styled.div<{ size: 'small' | 'large' }>`
     right: 0;
     width: 100%;
     height: 100%;
+  }
+
+  & ${DetailsContainer} {
+    display: none;
+  }
+
+  ${desktop} {
+    &:hover {
+      & ${DetailsContainer} {
+        display: block;
+      }
+    }
   }
 `

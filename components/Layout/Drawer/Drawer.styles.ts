@@ -5,7 +5,7 @@ export const Container = styled.div<{ show: boolean }>`
   z-index: 999;
   background-color: #000000;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   transition: transform 0.5s;
   padding: 12px 20px 12px 12px;
   color: #ffffff;
@@ -16,11 +16,15 @@ export const Container = styled.div<{ show: boolean }>`
   left: 0;
   right: 0;
   transition: transform 0.5s;
-  overflow: hidden;
+  overflow-y: auto;
   height: 100%;
 
   transform: ${(props) =>
     props.show ? 'translateX(0px)' : 'translateX(-100%)'};
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 export const Header = styled.div`

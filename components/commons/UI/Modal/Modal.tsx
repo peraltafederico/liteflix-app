@@ -4,7 +4,7 @@ import * as Styled from './Modal.styles'
 
 interface Props {
   onClose: () => void
-  children: React.ReactNode
+  children: ReactElement
   show: boolean
 }
 

@@ -4,7 +4,7 @@ import * as Styled from './MainNavigation.styles'
 
 interface Props {
   links: Link[]
-  children?: React.ReactNode
+  children?: ReactElement
 }
 
 export default function MainNavigation({

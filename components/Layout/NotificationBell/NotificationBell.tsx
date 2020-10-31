@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import * as Styled from './NotificationBell.styles'
 
 interface Props {
-  children?: React.ReactNode
+  children?: ReactElement
   notification?: boolean
 }
 

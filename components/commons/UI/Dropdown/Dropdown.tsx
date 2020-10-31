@@ -5,7 +5,7 @@ import * as Styled from './Dropdown.styles'
 
 interface Props {
   trigger?: 'click' | 'hover'
-  children: React.ReactNode
+  children: ReactElement
   menu: ReactElement
 }
 
@@ -30,15 +30,15 @@ export default function Dropdown({
     }
   }
 
-  const element = React.cloneElement(menu, { setShow })
-
   return (
     <Styled.Root>
       {show && <Backdrop transparent onClick={() => setShow(!show)} />}
       <Styled.Container {...getMouseEvents()}>{children}</Styled.Container>
       <Transition in={show} timeout={100}>
         {(state) => (
-          <Styled.MenuContainer state={state}>{element}</Styled.MenuContainer>
+          <Styled.MenuContainer state={state}>
+            {React.cloneElement(menu, { setShow })}
+          </Styled.MenuContainer>
         )}
       </Transition>
     </Styled.Root>
