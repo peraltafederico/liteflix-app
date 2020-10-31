@@ -3,12 +3,11 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import getConfig from 'next/config'
-import Input from '../../../UI/Input/Input'
+import Input from '../../../commons/UI/Input/Input'
 import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
-import Dropdown from '../../../UI/Dropdown/Dropdown'
-import { Option, Select } from './Select/Select'
+import { Option, Select } from '../../../commons/UI/Select/Select'
 
 const { publicRuntimeConfig } = getConfig()
 

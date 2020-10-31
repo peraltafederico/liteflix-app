@@ -1,7 +1,11 @@
 import React, { ReactElement } from 'react'
 import * as Styled from './MovieSpinner.styles'
 
-export default function MovieSpinner({ fill }: any): ReactElement {
+interface Props {
+  fill?: string
+}
+
+export default function MovieSpinner({ fill }: Props): ReactElement {
   return (
     <Styled.MovieLogo width="100%" height="100%" viewBox="0 0 1173 1280">
       <path

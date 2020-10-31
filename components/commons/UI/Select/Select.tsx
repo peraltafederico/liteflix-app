@@ -1,7 +1,7 @@
-import React, { CSSProperties, ReactElement, ReactText } from 'react'
+import React, { ReactElement, ReactText } from 'react'
 import { get, isFunction } from 'lodash'
-import Dropdown from '../../../../UI/Dropdown/Dropdown'
-import Input from '../../../../UI/Input/Input'
+import Dropdown from '../Dropdown/Dropdown'
+import Input from '../Input/Input'
 import * as Styled from './Select.styles'
 
 interface OptionProps {

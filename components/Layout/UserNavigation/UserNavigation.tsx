@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import Dropdown from '../../UI/Dropdown/Dropdown'
+import Dropdown from '../../commons/UI/Dropdown/Dropdown'
 import NotificationBell from '../NotificationBell/NotificationBell'
 import * as Styled from './UserNavigation.styles'
 import UserNavigationMenu from './UserNavigationMenu/UserNavigationMenu'

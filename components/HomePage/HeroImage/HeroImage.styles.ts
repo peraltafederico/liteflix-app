@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import BaseButton from '../../UI/BaseButton/BaseButton'
+import BaseButton from '../../commons/UI/BaseButton/BaseButton'
 import { desktop } from '../../../utils/breakpoints'
 
 export const Container = styled.div<{ background: string }>`
