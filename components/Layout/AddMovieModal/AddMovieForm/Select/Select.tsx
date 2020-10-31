@@ -1,39 +1,89 @@
-import { isFunction } from 'lodash'
-import React, { ReactElement } from 'react'
+import React, { CSSProperties, ReactElement, ReactText } from 'react'
+import { get, isFunction } from 'lodash'
+import Dropdown from '../../../../UI/Dropdown/Dropdown'
+import Input from '../../../../UI/Input/Input'
 import * as Styled from './Select.styles'
 
-interface Props {
-  options: { text: string; value: number | string }[]
-  onChange: (value: number | string) => void
-  setShow?: (show: boolean) => void
+interface OptionProps {
+  text: string
+  value: ReactText
+  onChange?: (value: ReactText) => void
 }
 
-export default function Select({
-  options,
-  onChange,
-  setShow,
-}: Props): ReactElement {
-  const handleClick = (option: any) => {
-    onChange(option.value)
-
-    if (isFunction(setShow)) {
-      setShow(false)
+export function Option({ text, value, onChange }: OptionProps): ReactElement {
+  const handleClick = () => {
+    if (isFunction(onChange)) {
+      onChange(value)
     }
   }
 
   return (
+    <Styled.Option data-value={value} onClick={handleClick} key={text}>
+      {text}
+    </Styled.Option>
+  )
+}
+
+interface MenuProps {
+  children: ReactElement | ReactElement[]
+  setShow?: (show: boolean) => void
+}
+
+function Menu({ children, setShow }: MenuProps) {
+  const options = React.Children.map(children, (child) =>
+    React.cloneElement(child, {
+      onChange: (value: ReactText) => {
+        child.props.onChange(value)
+
+        if (isFunction(setShow)) {
+          setShow(false)
+        }
+      },
+    })
+  )
+
+  return (
     <Styled.Container>
-      <Styled.Options>
-        {options.map((option) => (
-          <Styled.Option
-            data-value={option.value}
-            onClick={() => handleClick(option.value)}
-            key={option.text}
-          >
-            {option.text}
-          </Styled.Option>
-        ))}
-      </Styled.Options>
+      <Styled.Options>{options}</Styled.Options>
     </Styled.Container>
+  )
+}
+
+interface SelectProps {
+  onChange: (value: number | string) => void
+  children: ReactElement | ReactElement[]
+  value: ReactText
+}
+
+export function Select({
+  children,
+  onChange,
+  value,
+}: SelectProps): ReactElement {
+  const options = React.Children.map(children, (child) =>
+    React.cloneElement(child, { onChange })
+  )
+
+  const selectedElement = React.Children.toArray(children).find(
+    (child) => get(child, 'props.value') === value
+  )
+
+  const text = get(selectedElement, 'props.text')
+
+  return (
+    <Dropdown menu={<Menu>{options}</Menu>} trigger="click">
+      <Input
+        label="Categoría"
+        inputProps={{
+          autoComplete: 'off',
+          value: text,
+          readOnly: true,
+          style: {
+            caretColor: 'transparent',
+            cursor: 'pointer',
+          },
+        }}
+      />
+    </Dropdown>
   )
 }

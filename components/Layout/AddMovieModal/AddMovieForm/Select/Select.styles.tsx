@@ -1,17 +1,23 @@
 import styled from 'styled-components'
+import { tablet } from '../../../../../utils/breakpoints'
 
 export const Container = styled.div`
   position: absolute;
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 200%;
   border-radius: 10px;
   background-color: #ffffff;
   padding: 20px 30px 20px 20px;
-  top: -25px;
-  left: 0px;
+  top: -27px;
+  right: 0px;
   max-height: 260px;
   box-sizing: border-box;
   overflow: hidden;
+
+  ${tablet} {
+    width: 100%;
+    left: 0px;
+  }
 `
 export const Options = styled.ul`
   display: flex;
@@ -51,6 +57,10 @@ export const Option = styled.li`
 
   &:not(:last-child) {
     border-bottom: 1px solid #cccccc;
+  }
+
+  &:only-child {
+    padding: 0;
   }
 
   cursor: pointer;

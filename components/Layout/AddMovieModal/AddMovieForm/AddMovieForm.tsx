@@ -8,7 +8,7 @@ import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
 import Dropdown from '../../../UI/Dropdown/Dropdown'
-import Select from './Select/Select'
+import { Option, Select } from './Select/Select'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -39,6 +39,30 @@ const options = [
   {
     text: 'Sarasa 2',
     value: 2,
+  },
+  {
+    text: 'Sarasa 3',
+    value: 3,
+  },
+  {
+    text: 'Sarasa 4',
+    value: 4,
+  },
+  {
+    text: 'Sarasa 5',
+    value: 5,
+  },
+  {
+    text: 'Sarasa 6',
+    value: 6,
+  },
+  {
+    text: 'Sarasa 7',
+    value: 7,
+  },
+  {
+    text: 'Sarasa 8',
+    value: 8,
   },
 ]
 
@@ -129,9 +153,6 @@ export default function AddMovieForm({
 
   const handleCancel = () => setCancel(true)
 
-  const categoryValue =
-    options.find((option) => option.value === values.tmdbGenreId)?.text || ''
-
   return (
     <>
       {upload || completed || error ? (
@@ -159,27 +180,18 @@ export default function AddMovieForm({
             />
           </Styled.InputContainer>
           <Styled.InputContainer>
-            <Dropdown
-              menu={
-                <Select
-                  options={options}
-                  onChange={(value) => setFieldValue('tmdbGenreId', value)}
-                />
-              }
-              trigger="click"
+            <Select
+              onChange={(value) => setFieldValue('tmdbGenreId', value)}
+              value={values.tmdbGenreId}
             >
-              <Input
-                label="Categoría"
-                inputProps={{
-                  autoComplete: 'off',
-                  value: categoryValue,
-                  style: {
-                    caretColor: 'transparent',
-                    cursor: 'pointer',
-                  },
-                }}
-              />
-            </Dropdown>
+              {options.map((option) => (
+                <Option
+                  text={option.text}
+                  key={option.text}
+                  value={option.value}
+                />
+              ))}
+            </Select>
           </Styled.InputContainer>
         </Styled.InputsContainer>
 

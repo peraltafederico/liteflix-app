@@ -13,7 +13,7 @@ export const Modal = styled(CommonModal)<{ success: boolean }>`
 
   ${tablet} {
     max-width: 730px;
-    padding: 40px;
+    padding: 40px 35px;
     min-height: 354px;
   }
 `
