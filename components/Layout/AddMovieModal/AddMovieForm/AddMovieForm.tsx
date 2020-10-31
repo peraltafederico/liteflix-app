@@ -7,6 +7,8 @@ import Input from '../../../UI/Input/Input'
 import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
+import Dropdown from '../../../UI/Dropdown/Dropdown'
+import Select from './Select/Select'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -28,6 +30,17 @@ const validationSchema = Yup.object().shape({
   tmdbGenreId: Yup.number().required('Required'),
   imgUrl: Yup.string().required('Required'),
 })
+
+const options = [
+  {
+    text: 'Sarasa 1',
+    value: 1,
+  },
+  {
+    text: 'Sarasa 2',
+    value: 2,
+  },
+]
 
 export default function AddMovieForm({
   onSubmit,
@@ -116,6 +129,9 @@ export default function AddMovieForm({
 
   const handleCancel = () => setCancel(true)
 
+  const categoryValue =
+    options.find((option) => option.value === values.tmdbGenreId)?.text || ''
+
   return (
     <>
       {upload || completed || error ? (
@@ -134,20 +150,36 @@ export default function AddMovieForm({
         <Styled.InputsContainer>
           <Styled.InputContainer>
             <Input
-              name="title"
               label="Nombre de la película"
-              onChange={handleChange}
-              value={values.title}
+              inputProps={{
+                name: 'title',
+                onChange: handleChange,
+                value: values.title,
+              }}
             />
           </Styled.InputContainer>
           <Styled.InputContainer>
-            <Input
-              name="tmdbGenreId"
-              label="Categoría"
-              {...{ type: 'number' }}
-              onChange={handleChange}
-              value={values.tmdbGenreId}
-            />
+            <Dropdown
+              menu={
+                <Select
+                  options={options}
+                  onChange={(value) => setFieldValue('tmdbGenreId', value)}
+                />
+              }
+              trigger="click"
+            >
+              <Input
+                label="Categoría"
+                inputProps={{
+                  autoComplete: 'off',
+                  value: categoryValue,
+                  style: {
+                    caretColor: 'transparent',
+                    cursor: 'pointer',
+                  },
+                }}
+              />
+            </Dropdown>
           </Styled.InputContainer>
         </Styled.InputsContainer>
 

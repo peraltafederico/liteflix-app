@@ -9,6 +9,8 @@ export const Container = styled.div`
 export const MenuContainer = styled.div<{ state: string }>`
   transition: 0.1s;
   opacity: ${({ state }) => (state === 'entered' ? 1 : 0)};
+  display: ${({ state }) => (state === 'exited' ? 'none' : 'block')};
+
   position: relative;
   z-index: 999;
 `

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div<{ notification?: boolean }>`
   position: relative;
+  cursor: pointer;
 
   &:after {
     position: absolute;
