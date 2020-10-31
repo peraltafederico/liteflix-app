@@ -22,6 +22,8 @@ const {
 interface Props {
   onSubmit: (values: any) => void
   loading: boolean
+  fetchingGenres: boolean
+  genres: { id: number; name: string }[]
 }
 
 const validationSchema = Yup.object().shape({
@@ -30,44 +32,11 @@ const validationSchema = Yup.object().shape({
   imgUrl: Yup.string().required('Required'),
 })
 
-const options = [
-  {
-    text: 'Sarasa 1',
-    value: 1,
-  },
-  {
-    text: 'Sarasa 2',
-    value: 2,
-  },
-  {
-    text: 'Sarasa 3',
-    value: 3,
-  },
-  {
-    text: 'Sarasa 4',
-    value: 4,
-  },
-  {
-    text: 'Sarasa 5',
-    value: 5,
-  },
-  {
-    text: 'Sarasa 6',
-    value: 6,
-  },
-  {
-    text: 'Sarasa 7',
-    value: 7,
-  },
-  {
-    text: 'Sarasa 8',
-    value: 8,
-  },
-]
-
 export default function AddMovieForm({
   onSubmit,
   loading,
+  fetchingGenres,
+  genres,
 }: Props): ReactElement {
   const [upload, setUpload] = useState(false)
   const [completed, setCompleted] = useState(false)
@@ -179,18 +148,20 @@ export default function AddMovieForm({
             />
           </Styled.InputContainer>
           <Styled.InputContainer>
-            <Select
-              onChange={(value) => setFieldValue('tmdbGenreId', value)}
-              value={values.tmdbGenreId}
-            >
-              {options.map((option) => (
-                <Option
-                  text={option.text}
-                  key={option.text}
-                  value={option.value}
-                />
-              ))}
-            </Select>
+            {fetchingGenres ? (
+              <Styled.MovieLoadingContainer>
+                <Styled.MovieLoading />
+              </Styled.MovieLoadingContainer>
+            ) : (
+              <Select
+                onChange={(value) => setFieldValue('tmdbGenreId', value)}
+                value={values.tmdbGenreId}
+              >
+                {genres.map((genre: any) => (
+                  <Option text={genre.name} key={genre.name} value={genre.id} />
+                ))}
+              </Select>
+            )}
           </Styled.InputContainer>
         </Styled.InputsContainer>
 
