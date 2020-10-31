@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import BaseButton from '../../../UI/BaseButton/BaseButton'
+import BaseButton from '../../../commons/UI/BaseButton/BaseButton'
 
 export const Button = styled(BaseButton)<{ disabled?: boolean }>`
   height: 70px;

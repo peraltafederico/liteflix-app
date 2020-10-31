@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import MovieSpinner from '../../../commons/UI/MovieSpinner/MovieSpinner'
 import AddMovieButton from '../AddMovieButton/AddMovieButton'
 
 export const InputContainer = styled.div`
@@ -35,4 +36,13 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   flex: 1;
+`
+
+export const MovieLoading = styled(MovieSpinner)`
+  width: 35px;
+`
+
+export const MovieLoadingContainer = styled.div`
+  justify-content: center;
+  display: flex;
 `

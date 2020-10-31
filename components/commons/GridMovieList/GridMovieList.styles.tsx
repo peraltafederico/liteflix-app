@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Card from '../UI/MovieCard/MovieCard'
-import { desktop, tablet } from '../../utils/breakpoints'
+import { desktop, tablet } from '../../../utils/breakpoints'
 
 export const MovieCard = styled(Card)`
   margin-bottom: 10px;

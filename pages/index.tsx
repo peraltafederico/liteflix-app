@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import { useQuery } from 'react-query'
-import HeroImage from '../components/Home/HeroImage/HeroImage'
-import UpcomingMovies from '../components/Home/UpcomingMovies/UpcomingMovies'
-import PopularMovies from '../components/Home/PopularMovies/PopularMovies'
+import HeroImage from '../components/HomePage/HeroImage/HeroImage'
+import UpcomingMovies from '../components/HomePage/UpcomingMovies/UpcomingMovies'
+import PopularMovies from '../components/HomePage/PopularMovies/PopularMovies'
 import api from '../services'
-import GenreMovies from '../components/Home/GenreMovies/GenreMovies'
-import HomeSpinner from '../components/Home/HomeSpinner/HomeSpinner'
+import GenreMovies from '../components/HomePage/GenreMovies/GenreMovies'
+import HomeSpinner from '../components/HomePage/HomeSpinner/HomeSpinner'
 
 export default function Home({
   featured,

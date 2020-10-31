@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { tablet } from '../../../utils/breakpoints'
-import CommonModal from '../../UI/Modal/Modal'
+import CommonModal from '../../commons/UI/Modal/Modal'
 
 export const Modal = styled(CommonModal)<{ success: boolean }>`
   padding: 20px;

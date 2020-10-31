@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import Backdrop from '../../UI/Backdrop/Backdrop'
+import Backdrop from '../../commons/UI/Backdrop/Backdrop'
 import ExtensibleButton from '../ExtensibleButton/ExtensibleButton'
 import Burger from './Burger/Burger'
 import * as Styled from './Drawer.styles'

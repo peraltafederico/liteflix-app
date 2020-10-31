@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import GridMovieList from '../../GridMovieList/GridMovieList'
+import GridMovieList from '../../commons/GridMovieList/GridMovieList'
 import * as Styled from './GenreMovies.styles'
 
 interface Props {
