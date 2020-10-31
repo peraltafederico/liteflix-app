@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Card from '../UI/MovieCard/MovieCard'
+import Card from '../MovieCard/MovieCard'
 import { tablet } from '../../../utils/breakpoints'
 
 export const MovieCard = styled(Card)`

@@ -10,7 +10,7 @@ export default function GridMovieList({ movies, size }: Props): ReactElement {
   return (
     <Styled.MoviesContainer>
       {movies.map((movie) => (
-        <Styled.MovieCard size={size} key={movie.imgUrl} effects={false}>
+        <Styled.MovieCard size={size} key={movie.imgUrl}>
           <img src={movie.imgUrl} alt="movie" />
         </Styled.MovieCard>
       ))}

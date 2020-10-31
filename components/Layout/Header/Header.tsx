@@ -8,8 +8,8 @@ import MainNavigation from './MainNavigation/MainNavigation'
 interface Props {
   logoUrl: string
   links: Link[]
-  children?: React.ReactNode
-  secondaryNavigation?: React.ReactNode
+  children?: ReactElement
+  secondaryNavigation?: ReactElement
   onClickBurger: () => void
 }
 
