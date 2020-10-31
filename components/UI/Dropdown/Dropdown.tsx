@@ -1,4 +1,6 @@
 import React, { ReactElement, useState } from 'react'
+import { Transition } from 'react-transition-group'
+import Backdrop from '../Backdrop/Backdrop'
 import * as Styled from './Dropdown.styles'
 
 interface Props {
@@ -22,16 +24,21 @@ export default function Dropdown({
         }
       default:
         return {
+          onClick: () => setShow(!show),
           onMouseEnter: () => setShow(true),
-          onMouseLeave: () => setShow(false),
         }
     }
   }
 
   return (
-    <Styled.Container {...getMouseEvents()}>
-      {children}
-      {show && menu}
-    </Styled.Container>
+    <Styled.Root>
+      {show && <Backdrop transparent onClick={() => setShow(!show)} />}
+      <Styled.Container {...getMouseEvents()}>{children}</Styled.Container>
+      <Transition in={show} timeout={100}>
+        {(state) => (
+          <Styled.MenuContainer state={state}>{menu}</Styled.MenuContainer>
+        )}
+      </Transition>
+    </Styled.Root>
   )
 }
