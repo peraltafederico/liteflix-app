@@ -1,16 +1,8 @@
 import React, { ReactElement } from 'react'
-import MovieList from '../../commons/GridMovieList/GridMovieList'
-import * as Styled from './PopularMovies.styles'
+import MovieCategory from '../../commons/MovieCategory/MovieCategory'
 
-interface Props {
-  movies: { imgUrl: string; genre: string; title: string; }[]
-}
-
-export default function PopularMovies({ movies }: Props): ReactElement {
+export default function PopularMovies({ movies }: any): ReactElement {
   return (
-    <Styled.Container>
-      <Styled.Title>POPULARES DE LITEFLIX</Styled.Title>
-      <MovieList size="large" movies={movies} />
-    </Styled.Container>
+    <MovieCategory title="POPULARES DE LITEFLIX" size="large" movies={movies} />
   )
 }

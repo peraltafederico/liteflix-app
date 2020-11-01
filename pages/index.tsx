@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import { useQuery } from 'react-query'
 import HeroImage from '../components/HomePage/HeroImage/HeroImage'
+import api from '../services'
+import HomeSpinner from '../components/HomePage/HomeSpinner/HomeSpinner'
 import UpcomingMovies from '../components/HomePage/UpcomingMovies/UpcomingMovies'
 import PopularMovies from '../components/HomePage/PopularMovies/PopularMovies'
-import api from '../services'
 import GenreMovies from '../components/HomePage/GenreMovies/GenreMovies'
-import HomeSpinner from '../components/HomePage/HomeSpinner/HomeSpinner'
 
 export default function Home({
   featured,
@@ -47,14 +47,10 @@ export default function Home({
 }
 
 export async function getServerSideProps(): Promise<any> {
-  // const [{ data: mainMovies }, { data: genresMovies }] = await Promise.all([
-  //   api.movies.getMain(),
-  //   api.movies.getGroupedByGenre(),
-  // ])
-
-  const { data: mainMovies } = await api.movies.getMain()
-
-  const { data: genresMovies } = await api.movies.getGroupedByGenre()
+  const [{ data: mainMovies }, { data: genresMovies }] = await Promise.all([
+    api.movies.getMain(),
+    api.movies.getGroupedByGenre(),
+  ])
 
   return {
     props: {

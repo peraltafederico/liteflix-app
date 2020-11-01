@@ -1,11 +1,12 @@
 import React, { ReactElement } from 'react'
 import * as Styled from './MovieCard.styles'
 import LargeDetails from './LargeDetails/LargeDetails'
-import SmallDetails from './SmallDetails/SmallDetails'
+import { CardSize } from '../../../interfaces'
+import WideDetails from './WideDetails/WideDetails'
 
 interface Props {
   children: ReactElement
-  size: 'small' | 'large'
+  size: CardSize
   title: string
   genre: string
 }
@@ -21,11 +22,8 @@ export default function MovieCard({
     <Styled.Container size={size} {...props}>
       {children}
       <Styled.DetailsContainer>
-        {size === 'large' ? (
-          <LargeDetails title={title} genre={genre} />
-        ) : (
-          <SmallDetails title={title} genre={genre} />
-        )}
+        {size === 'large' && <LargeDetails title={title} genre={genre} />}
+        {size === 'wide' && <WideDetails title={title} genre={genre} />}
       </Styled.DetailsContainer>
     </Styled.Container>
   )

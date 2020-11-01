@@ -6,7 +6,7 @@ import Head from 'next/head'
 import { ReactQueryConfigProvider } from 'react-query'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../globalStyle'
-import Layout from '../components/Layout/Layout'
+import Layout from '../components/commons/Layout/Layout'
 
 const theme = {
   breakpoints: {
