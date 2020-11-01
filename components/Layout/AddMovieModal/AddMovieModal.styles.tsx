@@ -11,7 +11,7 @@ export const Modal = styled(CommonModal)<{ success: boolean; state: string }>`
   justify-content: ${(props) => (props.success ? 'space-between' : 'initial')};
   background-color: ${(props) => (props.success ? '#7ed321' : '#ffffff')};
 
-  transition: all 0.2s linear;
+  transition: transform 0.2s linear, opacity 0.2s linear, background-color 0.3s ease-in-out;
 
   ${tablet} {
     max-width: 730px;

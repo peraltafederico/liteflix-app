@@ -89,13 +89,19 @@ export default function Layout({
           <Styled.PlusIcon src="/images/plus.svg" />
         </ExtensibleButton>
       </Header>
-      <Drawer
-        show={showDrawer}
-        onClose={handleToggleDrawer}
-        onClickAddMovie={handleToggleModal}
-        settings={settings}
-        sections={sections}
-      />
+      <Transition in={showDrawer} timeout={500}>
+        {(state) => (
+          <Drawer
+            show={showDrawer}
+            onClose={handleToggleDrawer}
+            onClickAddMovie={handleToggleModal}
+            settings={settings}
+            sections={sections}
+            state={state}
+          />
+        )}
+      </Transition>
+
       {children}
     </>
   )

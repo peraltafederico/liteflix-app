@@ -13,6 +13,7 @@ interface Props {
   onClose: () => void
   onClickAddMovie: () => void
   show: boolean
+  state: string
 }
 
 export default function Drawer({
@@ -21,6 +22,7 @@ export default function Drawer({
   onClose,
   show,
   onClickAddMovie,
+  state,
 }: Props): ReactElement {
   useEffect(() => {
     if (show) {
@@ -35,7 +37,7 @@ export default function Drawer({
   return (
     <>
       {show && <Backdrop onClick={onClose} />}
-      <Styled.Container show={show}>
+      <Styled.Container state={state}>
         <Styled.Header>
           <Burger onClick={onClose} />
           <Styled.Logo src="/images/logo.svg" />
