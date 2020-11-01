@@ -7,6 +7,7 @@ import { ReactQueryConfigProvider } from 'react-query'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../globalStyle'
 import Layout from '../components/commons/Layout/Layout'
+import { AppContextProvider } from '../context/app'
 
 const theme = {
   breakpoints: {
@@ -39,9 +40,11 @@ class MyApp extends App {
         >
           <GlobalStyle />
           <ThemeProvider theme={theme}>
-            <Layout notification={true}>
-              <Component {...pageProps} />
-            </Layout>
+            <AppContextProvider>
+              <Layout notification={true}>
+                <Component {...pageProps} />
+              </Layout>
+            </AppContextProvider>
           </ThemeProvider>
         </ReactQueryConfigProvider>
       </>
