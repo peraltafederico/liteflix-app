@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react'
-import Backdrop from '../../UI/Backdrop/Backdrop'
+import React, { ReactElement, useEffect } from 'react'
+import Backdrop from '../../commons/UI/Backdrop/Backdrop'
 import ExtensibleButton from '../ExtensibleButton/ExtensibleButton'
 import Burger from './Burger/Burger'
 import * as Styled from './Drawer.styles'
@@ -13,6 +13,7 @@ interface Props {
   onClose: () => void
   onClickAddMovie: () => void
   show: boolean
+  state: string
 }
 
 export default function Drawer({
@@ -21,11 +22,22 @@ export default function Drawer({
   onClose,
   show,
   onClickAddMovie,
+  state,
 }: Props): ReactElement {
+  useEffect(() => {
+    if (show) {
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [show])
+
   return (
     <>
       {show && <Backdrop onClick={onClose} />}
-      <Styled.Container show={show}>
+      <Styled.Container state={state}>
         <Styled.Header>
           <Burger onClick={onClose} />
           <Styled.Logo src="/images/logo.svg" />

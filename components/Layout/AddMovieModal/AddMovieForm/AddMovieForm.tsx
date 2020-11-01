@@ -3,10 +3,11 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import getConfig from 'next/config'
-import Input from '../../../UI/Input/Input'
+import Input from '../../../commons/UI/Input/Input'
 import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
+import { Option, Select } from '../../../commons/UI/Select/Select'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -20,15 +21,23 @@ const {
 
 interface Props {
   onSubmit: (values: any) => void
+  loading: boolean
+  fetchingGenres: boolean
+  genres: { id: number; name: string }[]
 }
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
-  category: Yup.string().required('Required'),
+  title: Yup.string().required('Required'),
+  tmdbGenreId: Yup.number().required('Required'),
   imgUrl: Yup.string().required('Required'),
 })
 
-export default function AddMovieForm({ onSubmit }: Props): ReactElement {
+export default function AddMovieForm({
+  onSubmit,
+  loading,
+  fetchingGenres,
+  genres,
+}: Props): ReactElement {
   const [upload, setUpload] = useState(false)
   const [completed, setCompleted] = useState(false)
   const [error, setError] = useState(false)
@@ -43,10 +52,11 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
     values,
     setFieldValue,
   } = useFormik({
-    initialValues: { name: '', category: '', imgUrl: '' },
+    initialValues: { title: '', tmdbGenreId: '', imgUrl: '' },
     onSubmit,
     validationSchema,
     validateOnMount: true,
+    isInitialValid: false,
   })
 
   useEffect(() => {
@@ -129,28 +139,39 @@ export default function AddMovieForm({ onSubmit }: Props): ReactElement {
         <Styled.InputsContainer>
           <Styled.InputContainer>
             <Input
-              name="name"
               label="Nombre de la película"
-              onChange={handleChange}
-              value={values.name}
+              inputProps={{
+                name: 'title',
+                onChange: handleChange,
+                value: values.title,
+              }}
             />
           </Styled.InputContainer>
           <Styled.InputContainer>
-            <Input
-              name="category"
-              label="Categoría"
-              onChange={handleChange}
-              value={values.category}
-            />
+            {fetchingGenres ? (
+              <Styled.MovieLoadingContainer>
+                <Styled.MovieLoading />
+              </Styled.MovieLoadingContainer>
+            ) : (
+              <Select
+                onChange={(value) => setFieldValue('tmdbGenreId', value)}
+                value={values.tmdbGenreId}
+              >
+                {genres.map((genre: any) => (
+                  <Option text={genre.name} key={genre.name} value={genre.id} />
+                ))}
+              </Select>
+            )}
           </Styled.InputContainer>
         </Styled.InputsContainer>
 
         <Styled.Footer>
           <Styled.Button
-            disabled={!isValid}
+            disabled={loading || !isValid}
             onClick={submitForm}
             text="Subir Película"
             type="button"
+            loading={loading}
           />
         </Styled.Footer>
       </Styled.Form>

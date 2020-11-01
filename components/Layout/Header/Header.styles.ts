@@ -51,7 +51,9 @@ export const LogoContainer = styled.div`
   flex: 1;
 `
 
-export const Logo = styled.img``
+export const Logo = styled.img`
+  cursor: pointer;
+`
 
 export const BurgerContainer = styled.div<{ mobile?: boolean }>`
   position: absolute;

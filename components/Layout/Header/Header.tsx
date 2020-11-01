@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import useWindowsSize from '../../../hooks/useWindowsSize'
+import useBreakpoints from '../../../hooks/useBreakpoints'
 import Burger from '../Drawer/Burger/Burger'
 import { Link } from './commons/interfaces'
 import * as Styled from './Header.styles'
@@ -8,8 +8,8 @@ import MainNavigation from './MainNavigation/MainNavigation'
 interface Props {
   logoUrl: string
   links: Link[]
-  children?: React.ReactNode
-  secondaryNavigation?: React.ReactNode
+  children?: ReactElement
+  secondaryNavigation?: ReactElement
   onClickBurger: () => void
 }
 
@@ -20,7 +20,7 @@ export default function Header({
   secondaryNavigation,
   onClickBurger,
 }: Props): ReactElement {
-  const { mobile, desktop, tablet } = useWindowsSize()
+  const { mobile, desktop, tablet } = useBreakpoints()
 
   return (
     <Styled.Header>

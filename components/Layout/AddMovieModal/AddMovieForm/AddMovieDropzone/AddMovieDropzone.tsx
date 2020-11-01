@@ -4,7 +4,7 @@ import {
   FileRejection,
   useDropzone,
 } from 'react-dropzone/dist/index'
-import useWindowsSize from '../../../../../hooks/useWindowsSize'
+import useBreakpoints from '../../../../../hooks/useBreakpoints'
 
 import * as Styled from './AddMovieDropzone.styles'
 
@@ -19,8 +19,12 @@ interface Props {
 }
 
 export default function AddMovieDropzone({ onDrop }: Props): ReactElement {
-  const { getRootProps, getInputProps } = useDropzone({ onDrop })
-  const { mobile, desktop, tablet } = useWindowsSize()
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: 'image/jpeg, image/png',
+  })
+
+  const { mobile, desktop, tablet } = useBreakpoints()
 
   return (
     <Styled.Dropzone {...getRootProps()}>

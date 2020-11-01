@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import ProgressBar from '../../../../UI/ProgressBar/ProgressBar'
+import ProgressBar from '../../../../commons/UI/ProgressBar/ProgressBar'
 
 import * as Styled from './AddMovieProgress.styles'
 

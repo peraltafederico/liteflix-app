@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react'
-
 import * as Styled from './AddMovieButton.styles'
 
 interface Props {
@@ -7,6 +6,7 @@ interface Props {
   onClick: () => void
   disabled?: boolean
   type?: 'button' | 'submit' | 'reset' | undefined
+  loading?: boolean
 }
 
 export default function AddMovieButton({
@@ -14,10 +14,17 @@ export default function AddMovieButton({
   onClick,
   text,
   type,
+  loading,
   ...props
 }: Props): ReactElement {
   return (
-    <Styled.Button disabled={disabled} onClick={onClick} type={type} {...props}>
+    <Styled.Button
+      disabled={disabled}
+      onClick={onClick}
+      type={type}
+      loading={loading}
+      {...props}
+    >
       {text}
     </Styled.Button>
   )

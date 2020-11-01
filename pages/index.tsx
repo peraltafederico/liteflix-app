@@ -1,44 +1,61 @@
 import React, { ReactElement } from 'react'
-import HeroImage from '../components/Home/HeroImage/HeroImage'
-import UpcomingMovies from '../components/Home/UpcomingMovies/UpcomingMovies'
-import PopularMovies from '../components/Home/PopularMovies/PopularMovies'
+import { useQuery } from 'react-query'
+import HeroImage from '../components/HomePage/HeroImage/HeroImage'
+import UpcomingMovies from '../components/HomePage/UpcomingMovies/UpcomingMovies'
+import PopularMovies from '../components/HomePage/PopularMovies/PopularMovies'
+import api from '../services'
+import GenreMovies from '../components/HomePage/GenreMovies/GenreMovies'
+import HomeSpinner from '../components/HomePage/HomeSpinner/HomeSpinner'
 
-const upcomingMovies = [
-  {
-    imageUrl: '/images/peaky-blinders.jpg',
-  },
-  {
-    imageUrl: '/images/peaky-blinders.jpg',
-  },
-  {
-    imageUrl: '/images/peaky-blinders.jpg',
-  },
-  {
-    imageUrl: '/images/peaky-blinders.jpg',
-  },
-]
+export default function Home({
+  featured,
+  upcoming,
+  popular,
+  groupedByGenre,
+}: any): ReactElement {
+  const { data: response, isFetching } = useQuery(
+    'genreMovies',
+    api.movies.getGroupedByGenre,
+    {
+      initialData: groupedByGenre,
+    }
+  )
 
-const popularMovies = [
-  {
-    imageUrl: '/images/borrar_large.png',
-  },
-  {
-    imageUrl: '/images/borrar_large.png',
-  },
-  {
-    imageUrl: '/images/borrar_large.png',
-  },
-  {
-    imageUrl: '/images/borrar_large.png',
-  },
-]
-
-export default function Home(): ReactElement {
   return (
     <>
-      <HeroImage />
-      <UpcomingMovies movies={upcomingMovies} />
-      <PopularMovies movies={popularMovies} />
+      <HeroImage
+        title={featured.title}
+        overview={featured.overview}
+        imgUrl={featured.imgUrl}
+        genre={featured.genre}
+      />
+      <UpcomingMovies movies={upcoming} />
+      <PopularMovies movies={popular} />
+      {isFetching ? (
+        <HomeSpinner />
+      ) : (
+        (response?.data || groupedByGenre).map((group: any) => (
+          <GenreMovies
+            title={group.genre}
+            key={group.genre}
+            movies={group.movies}
+          />
+        ))
+      )}
     </>
   )
+}
+
+export async function getStaticProps(): Promise<any> {
+  const [{ data: mainMovies }, { data: genresMovies }] = await Promise.all([
+    api.movies.getMain(),
+    api.movies.getGroupedByGenre(),
+  ])
+
+  return {
+    props: {
+      ...mainMovies,
+      groupedByGenre: genresMovies,
+    },
+  }
 }

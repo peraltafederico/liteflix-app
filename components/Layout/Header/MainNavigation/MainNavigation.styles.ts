@@ -18,4 +18,6 @@ export const Link = styled.a<{ highlight?: boolean }>`
   font-size: 14px;
 
   font-weight: ${(props) => (props.highlight ? 'bold' : 'normal')};
+
+
 `
