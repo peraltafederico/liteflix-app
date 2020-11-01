@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
-import * as Styled from './SmallDetails.styles'
+import * as Styled from './WideDetails.styles'
 
 interface Props {
   title: string
   genre: string
 }
 
-export default function SmallDetails({ title, genre }: Props): ReactElement {
+export default function WideDetails({ title, genre }: Props): ReactElement {
   return (
     <>
       <Styled.Container>

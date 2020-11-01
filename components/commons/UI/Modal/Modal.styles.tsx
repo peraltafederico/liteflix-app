@@ -12,3 +12,12 @@ export const Container = styled.div<{ show: boolean }>`
   box-sizing: border-box;
   transform: translate(-50%, -50%);
 `
+
+export const CloseIcon = styled.img`
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+`
