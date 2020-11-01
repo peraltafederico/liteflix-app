@@ -95,14 +95,14 @@ export const ActionsContainer = styled.div`
   }
 `
 
-export const ParagraphTitle = styled.h2`
+export const Genre = styled.h2`
   font-size: 18px;
   font-weight: bold;
   margin: 25px 0 0 0;
 `
 
-export const Paragraph = styled.p`
-  margin: 25px 0 0 0;
+export const Description = styled.p`
+  margin: 0;
   font-size: 18px;
   font-weight: normal;
   max-width: 537px;

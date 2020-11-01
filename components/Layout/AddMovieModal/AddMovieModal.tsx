@@ -9,12 +9,17 @@ import AddMovieSuccess from './AddMovieSuccess/AddMovieSuccess'
 interface Props {
   onClose: () => void
   show: boolean
+  state: string
 }
 
 // TODO: Remove show prop
 // TODO: Add types
 
-export default function AddMovieModal({ onClose, show }: Props): ReactElement {
+export default function AddMovieModal({
+  onClose,
+  show,
+  state,
+}: Props): ReactElement {
   const [mutate, { isSuccess, data: movieResponse, isLoading }] = useMutation(
     (movie: any) => api.movies.create(movie),
     {
@@ -44,7 +49,12 @@ export default function AddMovieModal({ onClose, show }: Props): ReactElement {
     genres?.find((genre: any) => genre.id === movie?.tmdbGenreId) || {}
 
   return (
-    <Styled.Modal onClose={onClose} show={show} success={isSuccess}>
+    <Styled.Modal
+      onClose={onClose}
+      show={show}
+      success={isSuccess}
+      state={state}
+    >
       {isSuccess ? (
         <AddMovieSuccess
           movie={movie.title}
