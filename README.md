@@ -76,4 +76,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 [GET] https://api.themoviedb.org/3/movie/popular?api_key=6f26fd536dd6192ec8a57e94141f8b20
 
 - Información acerca del uso de imágenes:
-https://developers.themoviedb.org/3/getting-started/images
+https://developers.themoviedb.org/3/getting-started/images 
