@@ -22,7 +22,7 @@ const {
 interface Props {
   onSubmit: (values: any) => void
   loading: boolean
-  fetchingGenres: boolean
+  isFetchingGenres: boolean
   genres: { id: number; name: string }[]
 }
 
@@ -35,7 +35,7 @@ const validationSchema = Yup.object().shape({
 export default function AddMovieForm({
   onSubmit,
   loading,
-  fetchingGenres,
+  isFetchingGenres,
   genres,
 }: Props): ReactElement {
   const [upload, setUpload] = useState(false)
@@ -148,7 +148,7 @@ export default function AddMovieForm({
             />
           </Styled.InputContainer>
           <Styled.InputContainer>
-            {fetchingGenres ? (
+            {isFetchingGenres ? (
               <Styled.MovieLoadingContainer>
                 <Styled.MovieLoading />
               </Styled.MovieLoadingContainer>

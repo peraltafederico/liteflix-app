@@ -27,7 +27,7 @@ export default function Modal({
   return (
     <>
       {show && <Backdrop onClick={onClose} />}
-      <Styled.Container show={show} {...props}>
+      <Styled.Container {...props}>
         <Styled.CloseIcon src="/images/close.svg" onClick={onClose} />
         {children}
       </Styled.Container>
