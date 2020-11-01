@@ -22,7 +22,7 @@ export const MoviesContainer = styled.div`
 
   ${tablet} {
     display: grid;
-    justify-content: space-between;
+    justify-content: flex-start;
     grid-template-columns: repeat(auto-fit, 218px);
     grid-gap: 1px;
   }

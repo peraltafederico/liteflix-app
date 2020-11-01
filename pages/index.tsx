@@ -24,13 +24,13 @@ export default function Home({
   return (
     <>
       <HeroImage
-        title={featured.title}
-        overview={featured.overview}
-        imgUrl={featured.imgUrl}
-        genre={featured.genre}
+        title={featured?.title}
+        overview={featured?.overview}
+        imgUrl={featured?.imgUrl}
+        genre={featured?.genre}
       />
-      <UpcomingMovies movies={upcoming} />
-      <PopularMovies movies={popular} />
+      <UpcomingMovies movies={upcoming || []} />
+      <PopularMovies movies={popular || []} />
       {isFetching ? (
         <HomeSpinner />
       ) : (
@@ -47,10 +47,14 @@ export default function Home({
 }
 
 export async function getServerSideProps(): Promise<any> {
-  const [{ data: mainMovies }, { data: genresMovies }] = await Promise.all([
-    api.movies.getMain(),
-    api.movies.getGroupedByGenre(),
-  ])
+  // const [{ data: mainMovies }, { data: genresMovies }] = await Promise.all([
+  //   api.movies.getMain(),
+  //   api.movies.getGroupedByGenre(),
+  // ])
+
+  const { data: mainMovies } = await api.movies.getMain()
+
+  const { data: genresMovies } = await api.movies.getGroupedByGenre()
 
   return {
     props: {
