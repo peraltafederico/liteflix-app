@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
-import * as Styled from './FixedMovieList.styles'
+import * as Styled from './MovieList.styles'
 
 interface Props {
   movies: { imgUrl: string; genre: string; title: string }[]
   size: 'small' | 'large'
 }
 
-export default function FixedMovieList({ movies, size }: Props): ReactElement {
+export default function MovieList({ movies, size }: Props): ReactElement {
   return (
     <Styled.MoviesContainer>
       {movies.map((movie) => (

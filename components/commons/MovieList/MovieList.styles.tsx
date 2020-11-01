@@ -6,12 +6,11 @@ export const MovieCard = styled(Card)`
   margin-bottom: 10px;
 
   ${tablet} {
-    margin-bottom: 40px;
-    width: 218px;
+    width: 255px;
+    margin-bottom: 0px;
   }
 
   ${desktop} {
-    width: 255px;
   }
 `
 
@@ -22,13 +21,12 @@ export const MoviesContainer = styled.div`
 
   ${tablet} {
     display: grid;
-    justify-content: flex-start;
-    grid-template-columns: repeat(auto-fit, 218px);
-    grid-gap: 1px;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 255px));
+    justify-content: start;
   }
 
   ${desktop} {
-    grid-gap: 1em;
-    grid-template-columns: repeat(auto-fit, 255px);
+    grid-gap: 45px 30px;
   }
 `

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import GridMovieList from '../../commons/GridMovieList/GridMovieList'
+import MovieList from '../../commons/MovieList/MovieList'
 import * as Styled from './GenreMovies.styles'
 
 interface Props {
@@ -11,7 +11,7 @@ export default function GenreMovies({ movies, title }: Props): ReactElement {
   return (
     <Styled.Container>
       <Styled.Title>{title}</Styled.Title>
-      <GridMovieList size="small" movies={movies} />
+      <MovieList size="small" movies={movies} />
     </Styled.Container>
   )
 }
