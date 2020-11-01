@@ -24,13 +24,13 @@ export default function Home({
   return (
     <>
       <HeroImage
-        title={featured.title}
-        overview={featured.overview}
-        imgUrl={featured.imgUrl}
-        genre={featured.genre}
+        title={featured?.title}
+        overview={featured?.overview}
+        imgUrl={featured?.imgUrl}
+        genre={featured?.genre}
       />
-      <UpcomingMovies movies={upcoming} />
-      <PopularMovies movies={popular} />
+      <UpcomingMovies movies={upcoming || []} />
+      <PopularMovies movies={popular || []} />
       {isFetching ? (
         <HomeSpinner />
       ) : (
