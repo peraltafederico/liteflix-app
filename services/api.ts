@@ -5,6 +5,6 @@ const { publicRuntimeConfig } = getConfig()
 
 const { liteflixBffBaseUrl } = publicRuntimeConfig
 
-const api = axios.create({ baseURL: liteflixBffBaseUrl })
+const api = axios.create({ baseURL: 'https://liteflix-movies.herokuapp.com' })
 
 export default api
