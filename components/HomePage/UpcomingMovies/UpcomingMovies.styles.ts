@@ -1,21 +1,13 @@
 import styled from 'styled-components'
 import { tablet } from '../../../utils/breakpoints'
+import CommonMovieCategory from '../../commons/MovieCategory/MovieCategory'
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0 15px;
-  max-width: 333px;
-  margin: 0 auto;
+export const MovieCategory = styled(CommonMovieCategory)`
   margin-top: -60px;
 
   ${tablet} {
-    max-width: 1112px;
-    padding: 0 30px;
-    margin-top: -80px;
+    & > h2 {
+      margin-bottom: 20px;
+    }
   }
-`
-
-export const Title = styled.h2`
-  margin: 0 0 10px 0;
 `

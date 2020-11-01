@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { CardSize } from '../../../interfaces'
 import { desktop, tablet } from '../../../utils/breakpoints'
 
 export const DetailsContainer = styled.div`
@@ -6,15 +7,16 @@ export const DetailsContainer = styled.div`
   height: 100%;
 `
 
-export const Container = styled.div<{ size: 'small' | 'large' }>`
-  width: 100%;
+export const Container = styled.div<{ size: CardSize }>`
   position: relative;
-  width: ${(props) => (props.size === 'large' ? '163px' : '100%')};
+  width: 100%;
+  max-width: ${(props) => (props.size === 'large' ? '163px' : '330px')};
   height: ${(props) => (props.size === 'large' ? '328px' : '201px')};
   cursor: pointer;
 
   ${tablet} {
-    width: ${(props) => (props.size === 'large' ? '255px' : '255px')};
+    max-width: 330px;
+    width: 255px;
     height: ${(props) => (props.size === 'large' ? '507px' : '155px')};
   }
 
