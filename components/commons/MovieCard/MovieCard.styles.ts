@@ -1,12 +1,13 @@
 import styled from 'styled-components'
-import { desktop, tablet } from '../../../../../utils/breakpoints'
+import { CardSize } from '../../../interfaces'
+import { desktop, tablet } from '../../../utils/breakpoints'
 
 export const DetailsContainer = styled.div`
   width: 100%;
   height: 100%;
 `
 
-export const Container = styled.div<{ size: 'small' | 'large' }>`
+export const Container = styled.div<{ size: CardSize }>`
   position: relative;
   width: 100%;
   max-width: ${(props) => (props.size === 'large' ? '163px' : '330px')};

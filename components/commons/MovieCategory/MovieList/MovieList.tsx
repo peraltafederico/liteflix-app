@@ -1,9 +1,10 @@
 import React, { ReactElement } from 'react'
+import { CardSize } from '../../../../interfaces'
 import * as Styled from './MovieList.styles'
 
 interface Props {
   movies: { imgUrl: string; genre: string; title: string }[]
-  size: 'small' | 'large'
+  size: CardSize
 }
 
 export default function MovieList({ movies, size }: Props): ReactElement {

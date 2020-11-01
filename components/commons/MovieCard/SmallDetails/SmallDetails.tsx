@@ -40,7 +40,7 @@ export default function SmallDetails({ title, genre }: Props): ReactElement {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          cursor: 'default'
+          cursor: 'default',
         }}
       >
         <Styled.ArrowIconContainer>

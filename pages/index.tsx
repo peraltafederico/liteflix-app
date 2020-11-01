@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import { useQuery } from 'react-query'
 import HeroImage from '../components/HomePage/HeroImage/HeroImage'
-import MovieCategory from '../components/HomePage/MovieCategory/MovieCategory'
-import PopularMovies from '../components/HomePage/PopularMovies/PopularMovies'
 import api from '../services'
-import GenreMovies from '../components/HomePage/GenreMovies/GenreMovies'
 import HomeSpinner from '../components/HomePage/HomeSpinner/HomeSpinner'
+import UpcomingMovies from '../components/HomePage/UpcomingMovies/UpcomingMovies'
+import PopularMovies from '../components/HomePage/PopularMovies/PopularMovies'
+import GenreMovies from '../components/HomePage/GenreMovies/GenreMovies'
 
 export default function Home({
   featured,
@@ -29,28 +29,13 @@ export default function Home({
         imgUrl={featured?.imgUrl}
         genre={featured?.genre}
       />
-      <div
-        style={{
-          marginTop: -60,
-        }}
-      >
-        <MovieCategory
-          movies={upcoming || []}
-          size="small"
-          title="Próximamente"
-        />
-      </div>
-      <MovieCategory
-        movies={popular || []}
-        size="large"
-        title="POPULARES DE LITEFLIX"
-      />
+      <UpcomingMovies movies={upcoming || []} />
+      <PopularMovies movies={popular || []} />
       {isFetching ? (
         <HomeSpinner />
       ) : (
         (response?.data || groupedByGenre).map((group: any) => (
-          <MovieCategory
-            size="small"
+          <GenreMovies
             title={group.genre}
             key={group.genre}
             movies={group.movies}

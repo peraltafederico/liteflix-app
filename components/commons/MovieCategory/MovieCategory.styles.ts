@@ -12,7 +12,6 @@ export const Container = styled.div`
   ${tablet} {
     max-width: 1112px;
     padding: 0 15px;
-    /* margin-top: -80px; */
   }
 
   ${desktop} {
