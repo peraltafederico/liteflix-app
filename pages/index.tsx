@@ -27,6 +27,7 @@ export default function Home({
         title={featured.title}
         overview={featured.overview}
         imgUrl={featured.imgUrl}
+        genre={featured.genre}
       />
       <UpcomingMovies movies={upcoming} />
       <PopularMovies movies={popular} />

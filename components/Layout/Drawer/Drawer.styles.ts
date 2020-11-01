@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div<{ show: boolean }>`
+export const Container = styled.div<{ state: string }>`
   width: 228px;
   z-index: 999;
   background-color: #000000;
@@ -20,7 +20,9 @@ export const Container = styled.div<{ show: boolean }>`
   height: 100%;
 
   transform: ${(props) =>
-    props.show ? 'translateX(0px)' : 'translateX(-100%)'};
+    props.state === 'exited' || props.state === 'exiting'
+      ? 'translateX(-100%)'
+      : 'translateX(0%)'};
 
   ::-webkit-scrollbar {
     display: none;

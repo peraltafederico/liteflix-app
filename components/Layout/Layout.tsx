@@ -1,4 +1,5 @@
 import React, { ReactElement, useState } from 'react'
+import { Transition } from 'react-transition-group'
 import Header from './Header/Header'
 import UserNavigation from './UserNavigation/UserNavigation'
 import * as Styled from './Layout.styles'
@@ -51,9 +52,23 @@ export default function Layout({
 
   return (
     <>
-      {showModal && (
-        <AddMovieModal show={showModal} onClose={handleToggleModal} />
-      )}
+      <Transition
+        timeout={{
+          enter: 0,
+          exit: 200,
+        }}
+        in={showModal}
+        mountOnEnter
+        unmountOnExit
+      >
+        {(state) => (
+          <AddMovieModal
+            show={showModal}
+            onClose={handleToggleModal}
+            state={state}
+          />
+        )}
+      </Transition>
       <Header
         links={links}
         logoUrl="/images/logo.svg"
@@ -74,13 +89,19 @@ export default function Layout({
           <Styled.PlusIcon src="/images/plus.svg" />
         </ExtensibleButton>
       </Header>
-      <Drawer
-        show={showDrawer}
-        onClose={handleToggleDrawer}
-        onClickAddMovie={handleToggleModal}
-        settings={settings}
-        sections={sections}
-      />
+      <Transition in={showDrawer} timeout={500}>
+        {(state) => (
+          <Drawer
+            show={showDrawer}
+            onClose={handleToggleDrawer}
+            onClickAddMovie={handleToggleModal}
+            settings={settings}
+            sections={sections}
+            state={state}
+          />
+        )}
+      </Transition>
+
       {children}
     </>
   )

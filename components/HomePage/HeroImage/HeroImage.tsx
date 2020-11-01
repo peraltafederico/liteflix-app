@@ -7,14 +7,14 @@ interface Props {
   title: string
   overview: string
   imgUrl: string
-  paragraphTitle?: string
+  genre: string
 }
 
 export default function HeroImage({
   title,
   overview,
   imgUrl,
-  paragraphTitle,
+  genre,
 }: Props): ReactElement {
   const { desktop, mobile, tablet } = useBreakpoints()
 
@@ -44,10 +44,8 @@ export default function HeroImage({
         </Styled.Main>
         {desktop && (
           <Styled.TextContainer>
-            {paragraphTitle && (
-              <Styled.ParagraphTitle>Ver temporada 1</Styled.ParagraphTitle>
-            )}
-            <Styled.Paragraph>{overview}</Styled.Paragraph>
+            <Styled.Genre>{genre}</Styled.Genre>
+            <Styled.Description>{overview}</Styled.Description>
           </Styled.TextContainer>
         )}
       </Styled.Content>
