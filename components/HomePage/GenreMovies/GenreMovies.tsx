@@ -3,7 +3,7 @@ import GridMovieList from '../../commons/GridMovieList/GridMovieList'
 import * as Styled from './GenreMovies.styles'
 
 interface Props {
-  movies: { imgUrl: string }[]
+  movies: { imgUrl: string; genre: string; title: string }[]
   title: string
 }
 

@@ -1,5 +1,10 @@
 import axios from 'axios'
+import getConfig from 'next/config'
 
-const api = axios.create({ baseURL: 'http://localhost:3000' })
+const { publicRuntimeConfig } = getConfig()
+
+const { liteflixBffBaseUrl } = publicRuntimeConfig
+
+const api = axios.create({ baseURL: liteflixBffBaseUrl })
 
 export default api

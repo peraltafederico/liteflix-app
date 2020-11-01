@@ -10,9 +10,9 @@ module.exports = {
     return config
   },
   publicRuntimeConfig: {
-    cloudinaryBaseUrl: process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL,
-    cloudinaryUploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
-    cloudinaryCloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-    liteflixBff: process.env.NEXT_PUBLIC_LITEFLIX_BFF,
+    cloudinaryBaseUrl: process.env.CLOUDINARY_BASE_URL,
+    cloudinaryUploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET,
+    cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    liteflixBffBaseUrl: process.env.LITEFLIX_BFF_BASE_URL,
   },
 }

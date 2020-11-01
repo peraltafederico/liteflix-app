@@ -3,7 +3,7 @@ import MovieList from '../../commons/GridMovieList/GridMovieList'
 import * as Styled from './PopularMovies.styles'
 
 interface Props {
-  movies: { imgUrl: string }[]
+  movies: { imgUrl: string; genre: string; title: string; }[]
 }
 
 export default function PopularMovies({ movies }: Props): ReactElement {
