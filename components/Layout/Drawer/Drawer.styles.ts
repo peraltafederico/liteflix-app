@@ -15,18 +15,24 @@ export const Container = styled.div<{ state: string }>`
   bottom: 0;
   left: 0;
   right: 0;
-  transition: transform 0.5s;
-  overflow-y: auto;
+  transition: all 0.5s;
   height: 100%;
-
-  transform: ${(props) =>
-    props.state === 'exited' || props.state === 'exiting'
-      ? 'translateX(-100%)'
-      : 'translateX(0%)'};
+  overflow-y: auto;
 
   ::-webkit-scrollbar {
     display: none;
   }
+
+  transform: ${({ state }) => {
+    switch (state) {
+      case 'entering':
+        return 'translate(-100%)'
+      case 'entered':
+        return 'translateX(0%)'
+      default:
+        return 'translate(-100%)'
+    }
+  }};
 `
 
 export const Header = styled.div`

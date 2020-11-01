@@ -89,7 +89,14 @@ export default function Layout({
           <Styled.PlusIcon src="/images/plus.svg" />
         </ExtensibleButton>
       </Header>
-      <Transition in={showDrawer} timeout={500}>
+      <Transition
+        in={showDrawer}
+        timeout={{
+          enter: 0,
+          exit: 500,
+        }}
+        unmountOnExit
+      >
         {(state) => (
           <Drawer
             show={showDrawer}

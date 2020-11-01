@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "pre-prod": "yarn run build && yarn start"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
