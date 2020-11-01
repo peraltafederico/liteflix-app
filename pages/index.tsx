@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useQuery } from 'react-query'
 import HeroImage from '../components/HomePage/HeroImage/HeroImage'
-import UpcomingMovies from '../components/HomePage/UpcomingMovies/UpcomingMovies'
+import MovieCategory from '../components/HomePage/MovieCategory/MovieCategory'
 import PopularMovies from '../components/HomePage/PopularMovies/PopularMovies'
 import api from '../services'
 import GenreMovies from '../components/HomePage/GenreMovies/GenreMovies'
@@ -29,13 +29,28 @@ export default function Home({
         imgUrl={featured?.imgUrl}
         genre={featured?.genre}
       />
-      <UpcomingMovies movies={upcoming || []} />
-      <PopularMovies movies={popular || []} />
+      <div
+        style={{
+          marginTop: -60,
+        }}
+      >
+        <MovieCategory
+          movies={upcoming || []}
+          size="small"
+          title="Próximamente"
+        />
+      </div>
+      <MovieCategory
+        movies={popular || []}
+        size="large"
+        title="POPULARES DE LITEFLIX"
+      />
       {isFetching ? (
         <HomeSpinner />
       ) : (
         (response?.data || groupedByGenre).map((group: any) => (
-          <GenreMovies
+          <MovieCategory
+            size="small"
             title={group.genre}
             key={group.genre}
             movies={group.movies}
