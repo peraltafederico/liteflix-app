@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { tablet } from '../../../../utils/breakpoints'
 
 export const Container = styled.div<{ show: boolean }>`
   position: absolute;
@@ -11,13 +12,23 @@ export const Container = styled.div<{ show: boolean }>`
   z-index: 99999;
   box-sizing: border-box;
   transform: translate(-50%, -50%);
+  padding: 20px;
+
+  ${tablet} {
+    padding: 40px 35px;
+  }
 `
 
 export const CloseIcon = styled.img`
   width: 7px;
   height: 7px;
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 10px;
+  top: 10px;
   cursor: pointer;
+
+  ${tablet} {
+    right: 20px;
+    top: 20px;
+  }
 `

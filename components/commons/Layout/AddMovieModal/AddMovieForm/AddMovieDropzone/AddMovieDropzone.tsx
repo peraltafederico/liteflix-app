@@ -31,8 +31,8 @@ export default function AddMovieDropzone({ onDrop }: Props): ReactElement {
       <input {...getInputProps()} />
       <Styled.ClipIcon src="/images/clip.png" alt="clip" />
       <Styled.DropzoneText>
-        {mobile && <b>Agregar archivo</b>}
-        {(desktop || tablet) && (
+        {(mobile || tablet) && <b>Agregar archivo</b>}
+        {desktop && (
           <>
             <b>Agregar archivo</b> o arrastrarlo y soltarlo aquí
           </>

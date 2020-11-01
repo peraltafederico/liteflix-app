@@ -3,19 +3,19 @@ import { tablet } from '../../../../utils/breakpoints'
 import CommonModal from '../../UI/Modal/Modal'
 
 export const Modal = styled(CommonModal)<{ success: boolean; state: string }>`
-  padding: 20px;
   max-width: 350px;
   display: flex;
   flex-direction: column;
   min-height: 320px;
+
   justify-content: ${(props) => (props.success ? 'space-between' : 'initial')};
   background-color: ${(props) => (props.success ? '#7ed321' : '#ffffff')};
 
-  transition: transform 0.2s linear, opacity 0.2s linear, background-color 0.3s ease-in-out;
+  transition: transform 0.2s linear, opacity 0.2s linear,
+    background-color 0.3s ease-in-out;
 
   ${tablet} {
     max-width: 730px;
-    padding: 40px 35px;
     min-height: 354px;
   }
 
