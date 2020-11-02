@@ -2,21 +2,13 @@ import React, { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
-import getConfig from 'next/config'
 import Input from '../../../UI/Input/Input'
 import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
 import { Option, Select } from '../../../UI/Select/Select'
 import { RawMovieForm } from '../../../../../interfaces'
-
-const { publicRuntimeConfig } = getConfig()
-
-const {
-  cloudinaryBaseUrl,
-  cloudinaryUploadPreset,
-  cloudinaryCloudName,
-} = publicRuntimeConfig
+import api from '../../../../../services'
 
 interface Props {
   onSubmit: (values: RawMovieForm) => void
@@ -26,9 +18,9 @@ interface Props {
 }
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required('Required'),
-  tmdbGenreId: Yup.number().required('Required'),
-  imgUrl: Yup.string().required('Required'),
+  title: Yup.string().required(),
+  tmdbGenreId: Yup.number().required(),
+  imgUrl: Yup.string().required(),
 })
 
 export default function AddMovieForm({
@@ -64,17 +56,12 @@ export default function AddMovieForm({
     const sendFile = async () => {
       const data = new FormData()
       data.append('file', file)
-      data.append('upload_preset', cloudinaryUploadPreset as string)
 
       try {
-        const { data: res } = await axios.post(
-          `${cloudinaryBaseUrl}/v1_1/${cloudinaryCloudName}/upload`,
-          data,
-          {
-            onUploadProgress,
-            cancelToken: source.token,
-          }
-        )
+        const { data: res } = await api.movies.upload(data, {
+          onUploadProgress,
+          cancelToken: source.token,
+        })
 
         setFieldValue('imgUrl', res.url)
         setCompleted(true)
