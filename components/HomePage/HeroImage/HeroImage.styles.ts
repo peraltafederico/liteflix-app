@@ -27,7 +27,7 @@ export const Content = styled.div`
   margin-bottom: 120px;
 
   ${desktop} {
-    padding: 14vh 30px 0 30px;
+    padding: 16vh 30px 0 30px;
     display: block;
     justify-content: initial;
   }
