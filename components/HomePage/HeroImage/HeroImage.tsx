@@ -1,6 +1,6 @@
 import { noop } from 'lodash'
 import React, { ReactElement } from 'react'
-import useBreakpoints from '../../../hooks/useBreakpoints'
+import useDevices from '../../../hooks/useDevices'
 import * as Styled from './HeroImage.styles'
 
 interface Props {
@@ -16,7 +16,7 @@ export default function HeroImage({
   imgUrl,
   genre,
 }: Props): ReactElement {
-  const { desktop, mobile, tablet } = useBreakpoints()
+  const { isDesktop, isMobile, isTablet } = useDevices()
 
   return (
     <Styled.Container background={imgUrl}>
@@ -31,10 +31,10 @@ export default function HeroImage({
               <Styled.PlayIcon src="/images/play.svg" />
               <Styled.ButtonText>Reproducir</Styled.ButtonText>
             </Styled.Button>
-            {(mobile || tablet) && (
+            {(isMobile || isTablet) && (
               <Styled.CirclePlusIcon src="/images/circle-plus.svg" />
             )}
-            {desktop && (
+            {isDesktop && (
               <Styled.Button onClick={noop}>
                 <Styled.PlusIcon src="/images/plus.svg" />
                 <Styled.ButtonText>Mi Lista</Styled.ButtonText>
@@ -42,7 +42,7 @@ export default function HeroImage({
             )}
           </Styled.ActionsContainer>
         </Styled.Main>
-        {desktop && (
+        {isDesktop && (
           <Styled.TextContainer>
             <Styled.Genre>{genre}</Styled.Genre>
             <Styled.Description

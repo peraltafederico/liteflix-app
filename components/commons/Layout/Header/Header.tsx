@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import useBreakpoints from '../../../../hooks/useBreakpoints'
+import useDevices from '../../../../hooks/useDevices'
 import Burger from '../Drawer/Burger/Burger'
 import { Link } from './commons/interfaces'
 import * as Styled from './Header.styles'
@@ -20,20 +20,20 @@ export default function Header({
   secondaryNavigation,
   onClickBurger,
 }: Props): ReactElement {
-  const { mobile, desktop, tablet } = useBreakpoints()
+  const { isMobile, isDesktop, isTablet } = useDevices()
 
   return (
     <Styled.Header>
-      <Styled.Content mobile={mobile}>
-        {(mobile || tablet) && (
+      <Styled.Content mobile={isMobile}>
+        {(isMobile || isTablet) && (
           <>
-            <Styled.BurgerContainer mobile={mobile}>
+            <Styled.BurgerContainer mobile={isMobile}>
               <Burger onClick={onClickBurger} />
             </Styled.BurgerContainer>
             <Styled.Logo alt="logo" src={logoUrl} />
           </>
         )}
-        {desktop && (
+        {isDesktop && (
           <>
             <Styled.Logo alt="logo" src={logoUrl} />
             <Styled.Navigation>

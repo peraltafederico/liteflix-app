@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { tablet } from '../../../../utils/breakpoints'
+import { landscape, tablet } from '../../../../utils/breakpoints'
 import CommonModal from '../../UI/Modal/Modal'
 
 export const Modal = styled(CommonModal)<{ success: boolean; state: string }>`
@@ -17,6 +17,11 @@ export const Modal = styled(CommonModal)<{ success: boolean; state: string }>`
   ${tablet} {
     max-width: 730px;
     min-height: 354px;
+  }
+
+  ${landscape} {
+    max-width: 525px;
+    min-height: 315px;
   }
 
   opacity: ${({ state }) => {

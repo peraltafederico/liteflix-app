@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { tablet } from '../../../../utils/breakpoints'
+import { landscape, tablet } from '../../../../utils/breakpoints'
 
 export const Container = styled.div`
   position: absolute;
@@ -16,6 +16,10 @@ export const Container = styled.div`
 
   ${tablet} {
     padding: 40px 35px;
+  }
+
+  ${landscape} {
+    padding: 25px 35px;
   }
 `
 
