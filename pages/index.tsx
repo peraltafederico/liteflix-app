@@ -1,32 +1,21 @@
 import React, { ReactElement } from 'react'
 import { useQuery } from 'react-query'
-import { AxiosResponse } from 'axios'
 import HeroImage from '../components/HomePage/HeroImage/HeroImage'
 import api from '../services'
 import HomeSpinner from '../components/HomePage/HomeSpinner/HomeSpinner'
 import UpcomingMovies from '../components/HomePage/UpcomingMovies/UpcomingMovies'
 import PopularMovies from '../components/HomePage/PopularMovies/PopularMovies'
 import GenreMovies from '../components/HomePage/GenreMovies/GenreMovies'
-import { GroupedByGenreMovie, MainMovies } from '../interfaces'
-
-interface Props extends MainMovies {
-  groupedByGenre: GroupedByGenreMovie[]
-}
+import { MainMovies } from '../interfaces'
 
 export default function Home({
   featured,
   upcoming,
   popular,
-  groupedByGenre,
-}: Props): ReactElement {
+}: MainMovies): ReactElement {
   const { data: response, isFetching } = useQuery(
     'genreMovies',
-    api.movies.getGroupedByGenre,
-    {
-      initialData: { data: groupedByGenre } as AxiosResponse<
-        GroupedByGenreMovie[]
-      >,
-    }
+    api.movies.getGroupedByGenre
   )
 
   return (
@@ -54,16 +43,10 @@ export default function Home({
   )
 }
 
-export async function getServerSideProps(): Promise<{ props: Props }> {
-  const [{ data: mainMovies }, { data: genresMovies }] = await Promise.all([
-    api.movies.getMain(),
-    api.movies.getGroupedByGenre(),
-  ])
+export async function getServerSideProps(): Promise<{ props: MainMovies }> {
+  const { data: movies } = await api.movies.getMain()
 
   return {
-    props: {
-      ...mainMovies,
-      groupedByGenre: genresMovies,
-    },
+    props: movies,
   }
 }
