@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import CommonUserLogo from '../../UserLogo/UserLogo'
 
 export const Container = styled.div<{ state: string }>`
   width: 228px;
@@ -64,7 +65,7 @@ export const User = styled.div`
   cursor: pointer;
 `
 
-export const UserIcon = styled.img`
+export const UserLogo = styled(CommonUserLogo)`
   width: 25px;
   height: 25px;
   margin-right: 4px;
@@ -73,7 +74,7 @@ export const UserIcon = styled.img`
 export const UserName = styled.span`
   font-size: 12px;
   letter-spacing: 0;
-  margin-left: 4px;
+  margin-left: 8px;
   font-weight: normal;
 `
 

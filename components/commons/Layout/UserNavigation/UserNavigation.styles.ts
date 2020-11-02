@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import CommonUserLogo from '../../UserLogo/UserLogo'
 
 export const Container = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ export const User = styled.div`
   cursor: pointer;
 `
 
-export const UserIcon = styled.img`
+export const UserLogo = styled(CommonUserLogo)`
   margin-right: 4px;
 `
 

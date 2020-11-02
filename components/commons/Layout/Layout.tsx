@@ -16,9 +16,9 @@ const links = [
   { href: '#', url: 'Mi lista' },
 ]
 
-const settings = ['Cambiar Usuario', 'Configuración', 'Ayuda']
+const drawerSettings = ['Cambiar Usuario', 'Configuración', 'Ayuda']
 
-const sections = [
+const drawerSections = [
   {
     icon: <NotificationBell notification={true} />,
     value: 'Novedades',
@@ -27,6 +27,32 @@ const sections = [
   { value: 'Películas' },
   { value: 'Mi lista' },
   { value: 'Niños' },
+]
+
+const users = [
+  {
+    name: 'Ernesto Garmendia',
+    loggedIn: true,
+  },
+  {
+    name: 'User 03',
+  },
+  {
+    name: 'User 04',
+  },
+]
+
+const userMenuSettings = [
+  {
+    name: 'Configuración',
+  },
+  {
+    name: 'Ayuda',
+  },
+  {
+    name: 'Log Out',
+    highlight: true,
+  },
 ]
 
 interface Props {
@@ -81,8 +107,9 @@ export default function Layout({
         onClickBurger={handleToggleDrawer}
         secondaryNavigation={
           <UserNavigation
+            settings={userMenuSettings}
+            users={users}
             section="Niños"
-            userPhotoSrc="/images/user.svg"
             notification={notification}
           />
         }
@@ -114,13 +141,12 @@ export default function Layout({
             show={showDrawer}
             onClose={handleToggleDrawer}
             onClickAddMovie={handleToggleModal}
-            settings={settings}
-            sections={sections}
+            settings={drawerSettings}
+            sections={drawerSections}
             state={state}
           />
         )}
       </Transition>
-
       {children}
     </>
   )
