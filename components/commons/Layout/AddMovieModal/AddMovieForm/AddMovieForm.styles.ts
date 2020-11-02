@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { landscape } from '../../../../../utils/breakpoints'
 import MovieSpinner from '../../../UI/MovieSpinner/MovieSpinner'
 import AddMovieButton from '../AddMovieButton/AddMovieButton'
 
@@ -11,6 +12,10 @@ export const InputsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  ${landscape} {
+    margin-top: 25px;
+  }
 
   & ${InputContainer}:nth-child(1) {
     margin-right: 15px;

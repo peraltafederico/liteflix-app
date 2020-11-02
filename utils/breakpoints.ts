@@ -10,3 +10,6 @@ export const tablet = (props: ThemedStyledProps<any, any>) =>
 
 export const desktop = (props: ThemedStyledProps<any, any>) =>
   props.theme.breakpoints.desktop
+
+export const landscape = (props: ThemedStyledProps<any, any>) =>
+  props.theme.breakpoints.landscape

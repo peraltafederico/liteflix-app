@@ -4,7 +4,7 @@ import {
   FileRejection,
   useDropzone,
 } from 'react-dropzone/dist/index'
-import useBreakpoints from '../../../../../../hooks/useBreakpoints'
+import useDevices from '../../../../../../hooks/useDevices'
 
 import * as Styled from './AddMovieDropzone.styles'
 
@@ -24,15 +24,15 @@ export default function AddMovieDropzone({ onDrop }: Props): ReactElement {
     accept: 'image/jpeg, image/png',
   })
 
-  const { mobile, desktop, tablet } = useBreakpoints()
+  const { isMobile, isDesktop, isTablet } = useDevices()
 
   return (
     <Styled.Dropzone {...getRootProps()}>
       <input {...getInputProps()} />
       <Styled.ClipIcon src="/images/clip.png" alt="clip" />
       <Styled.DropzoneText>
-        {(mobile || tablet) && <b>Agregar archivo</b>}
-        {desktop && (
+        {(isMobile || isTablet) && <b>Agregar archivo</b>}
+        {isDesktop && (
           <>
             <b>Agregar archivo</b> o arrastrarlo y soltarlo aquí
           </>

@@ -14,6 +14,8 @@ const theme = {
     mobile: '@media only screen and (min-width: 0px)',
     tablet: '@media only screen and (min-width: 735px)',
     desktop: '@media only screen and (min-width: 1024px)',
+    landscape:
+      '@media only screen and (max-width: 850px) and (orientation: landscape)',
   },
 }
 

@@ -12,6 +12,11 @@ export const Dropzone = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 85px;
+
+  ${tablet} {
+    max-height: initial;
+  }
 `
 
 export const DropzoneText = styled.span`
