@@ -32,8 +32,6 @@ export const Users = styled.div`
   flex-flow: column wrap;
 `
 
-export const UserIcon = styled.img``
-
 export const UserContainer = styled.div<{ loggedIn?: boolean }>`
   max-width: 111px;
   padding: 6px 5px;
@@ -58,12 +56,12 @@ export const UserName = styled.span`
   margin-left: 5px;
 `
 
-export const Sections = styled.div`
+export const Settings = styled.div`
   display: flex;
   flex-flow: column wrap;
 `
 
-export const Section = styled.span<{ highlight?: boolean }>`
+export const Setting = styled.span<{ highlight?: boolean }>`
   display: flex;
   font-size: 12px;
   color: #000000;

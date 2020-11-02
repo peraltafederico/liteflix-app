@@ -7,13 +7,33 @@ export const Container = styled.div<{ notification?: boolean }>`
   &:after {
     position: absolute;
     display: ${(props) => (props.notification ? 'block' : 'none')};
-    width: 6px;
-    height: 6px;
+
     content: '';
     right: 1px;
     top: 2px;
     background-color: red;
     border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    animation: appear 0.7s ease-out;
+
+    @keyframes appear {
+      0% {
+        transform: scale(0, 0);
+      }
+
+      25% {
+        transform: scale(1, 1);
+      }
+
+      75% {
+        transform: scale(1.3, 1.3);
+      }
+
+      100% {
+        transform: scale(1, 1);
+      }
+    }
   }
 `
 

@@ -1,32 +1,33 @@
 import React, { ReactElement } from 'react'
+import UserLogo from '../../../UserLogo/UserLogo'
 import * as Styled from './UserNavigationMenu.styles'
 
 interface Props {
-  users: { name: string; imgUrl: string; loggedIn?: boolean }[]
-  sections: { name: string; highlight?: boolean }[]
+  users: { name: string; loggedIn?: boolean }[]
+  settings: { name: string; highlight?: boolean }[]
 }
 
 export default function UserNavigationMenu({
   users,
-  sections,
+  settings,
 }: Props): ReactElement {
   return (
     <Styled.Container>
       <Styled.Users>
         {users.map((user) => (
           <Styled.UserContainer loggedIn={user.loggedIn} key={user.name}>
-            <Styled.UserIcon src={user.imgUrl} alt="user" />
+            <UserLogo state={user.loggedIn ? 'active' : 'disabled'} />
             <Styled.UserName>{user.name}</Styled.UserName>
           </Styled.UserContainer>
         ))}
       </Styled.Users>
-      <Styled.Sections>
-        {sections.map((section) => (
-          <Styled.Section key={section.name} highlight={section.highlight}>
+      <Styled.Settings>
+        {settings.map((section) => (
+          <Styled.Setting key={section.name} highlight={section.highlight}>
             {section.name}
-          </Styled.Section>
+          </Styled.Setting>
         ))}
-      </Styled.Sections>
+      </Styled.Settings>
     </Styled.Container>
   )
 }

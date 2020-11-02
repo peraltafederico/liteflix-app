@@ -33,8 +33,8 @@ export default function Drawer({
           <Styled.Logo src="/images/logo.svg" />
         </Styled.Header>
         <Styled.User>
-          <Styled.UserIcon src="/images/user.svg" />
-          <Styled.UserName>Enersto Garmendia</Styled.UserName>
+          <Styled.UserLogo state="active" />
+          <Styled.UserName>Ernesto Garmendia</Styled.UserName>
         </Styled.User>
         <Styled.SettingsContainer>
           {settings.map((setting) => (

@@ -9,9 +9,6 @@ export const MovieLogo = styled.svg`
       transform: rotateZ(10deg);
     }
 
-    50% {
-    }
-
     100% {
       transform: rotateZ(-30deg);
     }

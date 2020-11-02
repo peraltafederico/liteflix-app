@@ -6,6 +6,8 @@ export const MovieCategory = styled(CommonMovieCategory)`
   margin-top: -60px;
 
   ${tablet} {
+    margin-top: -105px;
+
     & > h2 {
       margin-bottom: 20px;
     }
