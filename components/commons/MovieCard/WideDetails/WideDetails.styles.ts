@@ -52,7 +52,7 @@ export const AddIcon = styled.img``
 export const PlayIcon = styled.img``
 
 export const InfoTitle = styled.h2`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
   white-space: nowrap;
@@ -95,7 +95,7 @@ export const ArrowIcon = styled.img``
 
 export const MovieDta = styled.div`
   position: absolute;
-  bottom: 7px;
+  bottom: 10px;
 `
 
 export const OutsideArrowContainer = styled.div`
