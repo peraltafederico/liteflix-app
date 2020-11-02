@@ -45,7 +45,14 @@ export default function HeroImage({
         {desktop && (
           <Styled.TextContainer>
             <Styled.Genre>{genre}</Styled.Genre>
-            <Styled.Description>{overview}</Styled.Description>
+            <Styled.Description
+              text={overview}
+              maxLine="5"
+              ellipsis="..."
+              trimRight
+              basedOn="words"
+              component="p"
+            />
           </Styled.TextContainer>
         )}
       </Styled.Content>
