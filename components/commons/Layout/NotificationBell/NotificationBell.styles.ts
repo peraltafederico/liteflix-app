@@ -15,7 +15,7 @@ export const Container = styled.div<{ notification?: boolean }>`
     border-radius: 50%;
     width: 6px;
     height: 6px;
-    animation: appear 0.7s ease-out;
+    animation: appear 0.8s ease-out;
 
     @keyframes appear {
       0% {
@@ -27,7 +27,7 @@ export const Container = styled.div<{ notification?: boolean }>`
       }
 
       75% {
-        transform: scale(1.3, 1.3);
+        transform: scale(1.4, 1.4);
       }
 
       100% {

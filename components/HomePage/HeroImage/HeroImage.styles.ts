@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import LinesEllipsis from 'react-lines-ellipsis'
 import BaseButton from '../../commons/UI/BaseButton/BaseButton'
 import { desktop } from '../../../utils/breakpoints'
 
@@ -101,7 +102,7 @@ export const Genre = styled.h2`
   margin: 25px 0 0 0;
 `
 
-export const Description = styled.p`
+export const Description = styled(LinesEllipsis)`
   margin: 0;
   font-size: 18px;
   font-weight: normal;
