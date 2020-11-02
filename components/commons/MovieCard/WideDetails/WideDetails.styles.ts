@@ -57,8 +57,6 @@ export const AddIcon = styled.img``
 
 export const PlayIcon = styled.img``
 
-//
-
 export const InfoTitle = styled.h2`
   font-size: 18px;
   font-weight: bold;

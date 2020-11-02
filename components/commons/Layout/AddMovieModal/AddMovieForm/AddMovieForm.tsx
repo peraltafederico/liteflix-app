@@ -12,8 +12,6 @@ import { RawMovieForm } from '../../../../../interfaces'
 
 const { publicRuntimeConfig } = getConfig()
 
-// TODO: Add types
-
 const {
   cloudinaryBaseUrl,
   cloudinaryUploadPreset,

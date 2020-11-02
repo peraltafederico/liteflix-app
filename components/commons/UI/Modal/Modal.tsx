@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react'
+import React, { ReactElement } from 'react'
 import Backdrop from '../Backdrop/Backdrop'
 import * as Styled from './Modal.styles'
 
@@ -14,16 +14,6 @@ export default function Modal({
   show,
   ...props
 }: Props): ReactElement {
-  useEffect(() => {
-    if (show) {
-      document.body.style.overflow = 'hidden'
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto'
-    }
-  }, [show])
-
   return (
     <>
       {show && <Backdrop onClick={onClose} />}
