@@ -1,53 +1,8 @@
 import React, { ReactElement, ReactText } from 'react'
-import { get, isFunction } from 'lodash'
+import { get } from 'lodash'
 import Dropdown from '../Dropdown/Dropdown'
 import Input from '../Input/Input'
-import * as Styled from './Select.styles'
-
-interface OptionProps {
-  text: string
-  value: ReactText
-  onChange?: (value: ReactText) => void
-}
-
-export function Option({ text, value, onChange }: OptionProps): ReactElement {
-  const handleClick = () => {
-    if (isFunction(onChange)) {
-      onChange(value)
-    }
-  }
-
-  return (
-    <Styled.Option data-value={value} onClick={handleClick} key={text}>
-      {text}
-    </Styled.Option>
-  )
-}
-
-interface MenuProps {
-  children: ReactElement | ReactElement[]
-  setShow?: (show: boolean) => void
-}
-
-function Menu({ children, setShow }: MenuProps) {
-  const options = React.Children.map(children, (child) =>
-    React.cloneElement(child, {
-      onChange: (value: ReactText) => {
-        child.props.onChange(value)
-
-        if (isFunction(setShow)) {
-          setShow(false)
-        }
-      },
-    })
-  )
-
-  return (
-    <Styled.Container>
-      <Styled.Options>{options}</Styled.Options>
-    </Styled.Container>
-  )
-}
+import Menu from './Menu/Menu'
 
 interface SelectProps {
   onChange: (value: number | string) => void
@@ -55,7 +10,7 @@ interface SelectProps {
   value: ReactText
 }
 
-export function Select({
+export default function Select({
   children,
   onChange,
   value,
