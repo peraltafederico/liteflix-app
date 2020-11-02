@@ -31,22 +31,11 @@ export default function WideDetails({ title, genre }: Props): ReactElement {
           </Styled.MovieDta>
         </Styled.InfoContainer>
       </Styled.Container>
-      <div
-        style={{
-          height: 50,
-          position: 'absolute',
-          bottom: -50,
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          cursor: 'default',
-        }}
-      >
+      <Styled.OutsideArrowContainer>
         <Styled.ArrowIconContainer>
           <Styled.ArrowIcon src="/images/thin-arrow.svg" />
         </Styled.ArrowIconContainer>
-      </div>
+      </Styled.OutsideArrowContainer>
     </>
   )
 }

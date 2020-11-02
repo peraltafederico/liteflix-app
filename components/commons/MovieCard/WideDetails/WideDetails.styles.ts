@@ -11,10 +11,6 @@ export const Container = styled.div`
     rgba(0, 0, 0, 0) 1%,
     rgba(0, 0, 0, 0.9) 50%
   );
-
-  & img {
-    position: static !important;
-  }
 `
 
 export const InfoContainer = styled.div`
@@ -82,8 +78,16 @@ export const ArrowIconContainer = styled.div`
   height: 20px;
   cursor: pointer;
 
-  & img {
-    position: static !important;
+  animation: bounce 0.65s ease-in-out infinite;
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0px);
+    }
+
+    100% {
+      transform: translateY(9px);
+    }
   }
 `
 
@@ -92,4 +96,15 @@ export const ArrowIcon = styled.img``
 export const MovieDta = styled.div`
   position: absolute;
   bottom: 7px;
+`
+
+export const OutsideArrowContainer = styled.div`
+  height: 50px;
+  position: absolute;
+  bottom: -50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
 `

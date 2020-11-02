@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   max-width: 330px;
   margin: 0 auto;
-  margin-bottom: 45px;
+  margin-bottom: 50px;
   padding: 0 15px;
 
   ${tablet} {
