@@ -6,9 +6,10 @@ import Input from '../../../UI/Input/Input'
 import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
-import { Option, Select } from '../../../UI/Select/Select'
+import Select from '../../../UI/Select/Select'
 import { RawMovieForm } from '../../../../../interfaces'
 import api from '../../../../../services'
+import Option from '../../../UI/Select/Option/Option'
 
 interface Props {
   onSubmit: (values: RawMovieForm) => void

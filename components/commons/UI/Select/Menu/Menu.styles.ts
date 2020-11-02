@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { tablet } from '../../../../utils/breakpoints'
+import { tablet } from '../../../../../utils/breakpoints'
 
 export const Container = styled.div`
   position: absolute;
@@ -40,33 +40,5 @@ export const Options = styled.ul`
   ::-webkit-scrollbar-thumb {
     background-color: #9b9b9b;
     border-radius: 5.5px;
-  }
-`
-
-export const Option = styled.li`
-  padding: 8px 0;
-  margin-right: 20px;
-
-  &:first-child {
-    padding: 0 0 8px 0;
-  }
-
-  &:last-child {
-    padding: 8px 0 0 0;
-  }
-
-  &:not(:last-child) {
-    border-bottom: 1px solid #cccccc;
-  }
-
-  &:only-child {
-    padding: 0;
-  }
-
-  cursor: pointer;
-  color: #9b9b9b;
-
-  &:hover {
-    color: #000000;
   }
 `
