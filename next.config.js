@@ -13,6 +13,6 @@ module.exports = {
     cloudinaryBaseUrl: process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL,
     cloudinaryUploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,
     cloudinaryCloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-    liteflixBffBaseUrl: process.env.NEXT_PUBLIC_LITEFLIX_BFF,
+    liteflixBffBaseUrl: process.env.NEXT_PUBLIC_LITEFLIX_BFF_BASE_URL,
   },
 }
