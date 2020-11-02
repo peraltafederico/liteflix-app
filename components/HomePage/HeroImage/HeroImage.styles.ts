@@ -27,7 +27,7 @@ export const Content = styled.div`
   margin-bottom: 120px;
 
   ${desktop} {
-    padding: 16vh 30px 0 30px;
+    padding: 14vh 30px 0 30px;
     display: block;
     justify-content: initial;
   }
@@ -71,8 +71,7 @@ export const Title = styled.h1`
 
 export const Button = styled(BaseButton)`
   display: flex;
-  opacity: 0.5;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.5);
   width: 160px;
   justify-content: flex-start;
 
