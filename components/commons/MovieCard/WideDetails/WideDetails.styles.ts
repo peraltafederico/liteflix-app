@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-// TODO: Fix position static !important on images
-
 export const Container = styled.div`
   position: absolute;
   top: 0;
