@@ -31,9 +31,13 @@ export const Container = styled.div<{ size: CardSize }>`
   }
 
   & ${DetailsContainer} {
-    opacity: 0;
+    display: none;
 
-    transition: opacity 0.18s ease-in;
+    ${desktop} {
+      display: block;
+      opacity: 0;
+      transition: opacity 0.18s ease-in;
+    }
   }
 
   ${desktop} {
