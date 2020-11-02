@@ -1,7 +1,12 @@
 import React, { ReactElement } from 'react'
+import { Movie } from '../../../interfaces'
 import * as Styled from './UpcomingMovies.styles'
 
-export default function UpcomingMovies({ movies }: any): ReactElement {
+interface Props {
+  movies: Movie[]
+}
+
+export default function UpcomingMovies({ movies }: Props): ReactElement {
   return (
     <Styled.MovieCategory title="Próximamente" size="wide" movies={movies} />
   )

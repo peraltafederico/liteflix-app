@@ -5,20 +5,21 @@ import React, {
   SetStateAction,
   useState,
 } from 'react'
+import { Genre } from '../interfaces'
 
 interface Props {
   children: React.ReactNode
 }
 
 interface Context {
-  genres: any[]
-  setGenres: Dispatch<SetStateAction<never[]>>
+  genres: Genre[]
+  setGenres: Dispatch<SetStateAction<Genre[]>>
 }
 
 export const AppContext = createContext({} as Context)
 
 export const AppContextProvider = ({ children }: Props): ReactElement => {
-  const [genres, setGenres] = useState([])
+  const [genres, setGenres] = useState([] as Genre[])
 
   const values = {
     genres,
