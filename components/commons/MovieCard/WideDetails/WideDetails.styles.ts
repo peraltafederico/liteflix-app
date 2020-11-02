@@ -95,7 +95,7 @@ export const ArrowIcon = styled.img``
 
 export const MovieDta = styled.div`
   position: absolute;
-  bottom: 10px;
+  bottom: 7px;
 `
 
 export const OutsideArrowContainer = styled.div`

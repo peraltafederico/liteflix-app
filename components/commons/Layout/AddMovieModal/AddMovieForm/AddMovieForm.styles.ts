@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { landscape } from '../../../../../utils/breakpoints'
+import { landscape, tablet } from '../../../../../utils/breakpoints'
 import MovieSpinner from '../../../UI/MovieSpinner/MovieSpinner'
 import AddMovieButton from '../AddMovieButton/AddMovieButton'
 
@@ -50,4 +50,20 @@ export const MovieLoading = styled(MovieSpinner)`
 export const MovieLoadingContainer = styled.div`
   justify-content: center;
   display: flex;
+`
+
+export const ErrorText = styled.span`
+  color: #ff0000;
+  font-weight: bold;
+  position: absolute;
+  font-size: 11px;
+  bottom: 3px;
+
+  ${tablet} {
+    bottom: 17px;
+  }
+
+  ${landscape} {
+    bottom: 8px;
+  }
 `
