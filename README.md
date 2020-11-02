@@ -1,6 +1,6 @@
 ## liteflix-app
 
-Front 
+Liteflix Frontend 
 
 ## Build Setup
 
