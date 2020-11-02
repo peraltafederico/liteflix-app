@@ -20,7 +20,7 @@ export const Container = styled.div<{ size: CardSize }>`
     height: ${(props) => (props.size === 'large' ? '507px' : '155px')};
   }
 
-  & img {
+  & > img {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -31,13 +31,15 @@ export const Container = styled.div<{ size: CardSize }>`
   }
 
   & ${DetailsContainer} {
-    display: none;
+    opacity: 0;
+
+    transition: opacity 0.18s ease-in;
   }
 
   ${desktop} {
     &:hover {
       & ${DetailsContainer} {
-        display: block;
+        opacity: 1;
       }
     }
   }

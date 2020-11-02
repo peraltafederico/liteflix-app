@@ -47,9 +47,7 @@ export const LikeIconContainer = styled.div`
   bottom: 89px;
 `
 
-export const LikeIcon = styled.img`
-  position: static !important;
-`
+export const LikeIcon = styled.img``
 
 export const PlayIconContainer = styled.div`
   width: 40px;
@@ -58,9 +56,7 @@ export const PlayIconContainer = styled.div`
   bottom: 7px;
 `
 
-export const PlayIcon = styled.img`
-  position: static !important;
-`
+export const PlayIcon = styled.img``
 
 export const ArrowIconContainer = styled.div`
   width: 37px;
@@ -69,8 +65,18 @@ export const ArrowIconContainer = styled.div`
   bottom: 17px;
   left: 50%;
   transform: translateX(-50%);
+
+  animation: bounce 0.65s ease-in-out infinite;
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0px);
+    }
+
+    100% {
+      transform: translateY(9px);
+    }
+  }
 `
 
-export const ArrowIcon = styled.img`
-  position: static !important;
-`
+export const ArrowIcon = styled.img``
