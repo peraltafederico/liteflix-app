@@ -14,16 +14,6 @@ export default function Modal({
   show,
   ...props
 }: Props): ReactElement {
-  useEffect(() => {
-    if (show) {
-      document.body.style.overflow = 'hidden'
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto'
-    }
-  }, [show])
-
   return (
     <>
       {show && <Backdrop onClick={onClose} />}
