@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react'
+import React, { ReactElement } from 'react'
 import Backdrop from '../../UI/Backdrop/Backdrop'
 import ExtensibleButton from '../ExtensibleButton/ExtensibleButton'
 import Burger from './Burger/Burger'
@@ -24,16 +24,6 @@ export default function Drawer({
   onClickAddMovie,
   state,
 }: Props): ReactElement {
-  useEffect(() => {
-    if (show) {
-      document.body.style.overflow = 'hidden'
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto'
-    }
-  }, [show])
-
   return (
     <>
       {show && <Backdrop onClick={onClose} />}

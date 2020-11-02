@@ -60,6 +60,12 @@ export default function Layout({
         in={showModal}
         mountOnEnter
         unmountOnExit
+        onEntered={() => {
+          document.body.style.overflow = 'hidden'
+        }}
+        onExit={() => {
+          document.body.style.overflow = 'auto'
+        }}
       >
         {(state) => (
           <AddMovieModal
@@ -96,6 +102,12 @@ export default function Layout({
           exit: 500,
         }}
         unmountOnExit
+        onEntered={() => {
+          document.body.style.overflow = 'hidden'
+        }}
+        onExit={() => {
+          document.body.style.overflow = 'auto'
+        }}
       >
         {(state) => (
           <Drawer
