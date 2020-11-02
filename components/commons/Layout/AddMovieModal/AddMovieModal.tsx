@@ -6,14 +6,13 @@ import AddMovieForm from './AddMovieForm/AddMovieForm'
 import api from '../../../../services'
 import AddMovieSuccess from './AddMovieSuccess/AddMovieSuccess'
 import { AppContext } from '../../../../context/app'
+import { RawMovie, RawMovieForm } from '../../../../interfaces'
 
 interface Props {
   onClose: () => void
   show: boolean
   state: string
 }
-
-// TODO: Add types
 
 export default function AddMovieModal({
   onClose,
@@ -22,14 +21,14 @@ export default function AddMovieModal({
 }: Props): ReactElement {
   const { genres, setGenres } = useContext(AppContext)
 
-  const [mutate, { isSuccess, data: movieResponse, isLoading }] = useMutation(
-    (movie: any) => api.movies.create(movie),
-    {
-      onSuccess: () => {
-        queryCache.refetchQueries('genreMovies')
-      },
-    }
-  )
+  const [
+    mutate,
+    { isSuccess, data: movieCreationResponse, isLoading },
+  ] = useMutation((movie: RawMovie) => api.movies.create(movie), {
+    onSuccess: () => {
+      queryCache.refetchQueries('genreMovies')
+    },
+  })
 
   const { isFetching: isFetchingGenres } = useQuery(
     'genres',
@@ -40,17 +39,16 @@ export default function AddMovieModal({
     }
   )
 
-  const handlePublishMovie = async (values: any) => {
+  const handlePublishMovie = async (values: RawMovieForm) => {
     await mutate({
       ...values,
       tmdbGenreId: toNumber(values.tmdbGenreId),
     })
   }
 
-  const movie = movieResponse?.data || {}
+  const movie = movieCreationResponse?.data
 
-  const category =
-    genres?.find((genre: any) => genre.id === movie?.tmdbGenreId) || {}
+  const category = genres?.find((genre) => genre.id === movie?.tmdbGenreId)
 
   return (
     <Styled.Modal
@@ -61,8 +59,8 @@ export default function AddMovieModal({
     >
       {isSuccess ? (
         <AddMovieSuccess
-          movie={movie.title}
-          category={category.name}
+          movie={movie?.title || ''}
+          category={category?.name || ''}
           onClose={onClose}
         />
       ) : (

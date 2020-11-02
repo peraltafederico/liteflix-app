@@ -8,6 +8,7 @@ import AddMovieDropzone from './AddMovieDropzone/AddMovieDropzone'
 import * as Styled from './AddMovieForm.styles'
 import AddMovieProgress from './AddMovieProgress/AddMovieProgress'
 import { Option, Select } from '../../../UI/Select/Select'
+import { RawMovieForm } from '../../../../../interfaces'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -20,7 +21,7 @@ const {
 } = publicRuntimeConfig
 
 interface Props {
-  onSubmit: (values: any) => void
+  onSubmit: (values: RawMovieForm) => void
   loading: boolean
   isFetchingGenres: boolean
   genres: { id: number; name: string }[]
@@ -157,7 +158,7 @@ export default function AddMovieForm({
                 onChange={(value) => setFieldValue('tmdbGenreId', value)}
                 value={values.tmdbGenreId}
               >
-                {genres.map((genre: any) => (
+                {genres.map((genre) => (
                   <Option text={genre.name} key={genre.name} value={genre.id} />
                 ))}
               </Select>
