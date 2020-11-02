@@ -5,6 +5,17 @@ import { desktop, tablet } from '../../../utils/breakpoints'
 export const DetailsContainer = styled.div`
   width: 100%;
   height: 100%;
+  display: none;
+  transition: opacity 0.18s ease-in;
+
+  ${desktop} {
+    display: block;
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 `
 
 export const Container = styled.div<{ size: CardSize }>`
@@ -28,23 +39,5 @@ export const Container = styled.div<{ size: CardSize }>`
     right: 0;
     width: 100%;
     height: 100%;
-  }
-
-  & ${DetailsContainer} {
-    display: none;
-
-    ${desktop} {
-      display: block;
-      opacity: 0;
-      transition: opacity 0.18s ease-in;
-    }
-  }
-
-  ${desktop} {
-    &:hover {
-      & ${DetailsContainer} {
-        opacity: 1;
-      }
-    }
   }
 `
