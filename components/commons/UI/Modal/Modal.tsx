@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react'
+import React, { ReactElement } from 'react'
 import Backdrop from '../Backdrop/Backdrop'
 import * as Styled from './Modal.styles'
 
