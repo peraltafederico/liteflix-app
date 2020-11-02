@@ -8,7 +8,7 @@ export const Container = styled.div`
   background-color: #fff;
   border-radius: 5px;
   padding: 10px;
-  top: 10px;
+  top: 18px;
   right: 0;
   box-sizing: border-box;
   align-content: center;
@@ -20,8 +20,8 @@ export const Container = styled.div`
     width: 17px;
     height: 17px;
     background-color: #ffffff;
-    right: 25px;
-    top: -5px;
+    right: 20.5px;
+    top: -6px;
     transform: rotate(-315deg);
     border-radius: 5px;
   }

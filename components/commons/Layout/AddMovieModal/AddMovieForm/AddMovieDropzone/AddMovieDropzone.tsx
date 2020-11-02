@@ -22,6 +22,8 @@ export default function AddMovieDropzone({ onDrop }: Props): ReactElement {
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: 'image/jpeg, image/png',
+    multiple: false,
+    maxFiles: 1,
   })
 
   const { isMobile, isDesktop, isTablet } = useDevices()

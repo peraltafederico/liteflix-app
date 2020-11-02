@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext } from 'react'
+import React, { ReactElement, useContext, useState } from 'react'
 import { queryCache, useMutation, useQuery } from 'react-query'
 import { toNumber } from 'lodash'
 import * as Styled from './AddMovieModal.styles'
@@ -20,14 +20,17 @@ export default function AddMovieModal({
   state,
 }: Props): ReactElement {
   const { genres, setGenres } = useContext(AppContext)
+  const [creationError, setCreationError] = useState(false)
 
   const [
     mutate,
     { isSuccess, data: movieCreationResponse, isLoading },
   ] = useMutation((movie: RawMovie) => api.movies.create(movie), {
     onSuccess: () => {
+      setCreationError(false)
       queryCache.refetchQueries('genreMovies')
     },
+    onError: () => setCreationError(true),
   })
 
   const { isFetching: isFetchingGenres } = useQuery(
@@ -69,6 +72,7 @@ export default function AddMovieModal({
           loading={isLoading}
           isFetchingGenres={isFetchingGenres}
           genres={genres}
+          creationError={creationError}
         />
       )}
     </Styled.Modal>

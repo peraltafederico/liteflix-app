@@ -16,6 +16,7 @@ interface Props {
   loading: boolean
   isFetchingGenres: boolean
   genres: { id: number; name: string }[]
+  creationError: boolean
 }
 
 const validationSchema = Yup.object().shape({
@@ -29,6 +30,7 @@ export default function AddMovieForm({
   loading,
   isFetchingGenres,
   genres,
+  creationError,
 }: Props): ReactElement {
   const [upload, setUpload] = useState(false)
   const [completed, setCompleted] = useState(false)
@@ -160,6 +162,11 @@ export default function AddMovieForm({
             type="button"
             loading={loading}
           />
+          {creationError && (
+            <Styled.ErrorText>
+              Hubo un error creando la película :(
+            </Styled.ErrorText>
+          )}
         </Styled.Footer>
       </Styled.Form>
     </>
